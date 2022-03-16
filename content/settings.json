@@ -1,0 +1,20 @@
+{
+  "title": "@InternetIdentityLabs",
+  "description": "Description goes here",
+  "url": "http://localhost:3000/",
+  "layout": "docs",
+  "logo": {
+    "light": "/logo-dark.png",
+    "dark": "/logo-light.png"
+  },
+  "header": {
+    "logo": true,
+    "title": false
+  },
+  "github": "InternetIdentityLabs",
+  "twitter": "@IdentityMaxis",
+  "colors": {
+    "primary": "#5163ba"
+  },
+  "credits": false
+}
