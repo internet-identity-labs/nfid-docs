@@ -1,85 +1,148 @@
 ---
-title: Build your first React App
+title: Getting started with NFID
+description: React components to use DFINITY Internet Identity Authentication
 category: React
-menu: true
-menuTitle: Setup
-position: 1
+menuTitle: Getting Started
+position: 2
 ---
-This project is to get you started with **React**. 
+<alert type="info">
+  Make sure you have gone through the <span class="font-bold">Setup</span> section first before you continue.
+</alert> 
 
-## Before you start
+## Usage and limitations
+We provide two samples on how to integrate II into your app. The first one and most commonly used is, open II within a new browser tab. The second one is open II within an iFrame. This is our preferred integration. But there are some limitations to it:
 
-For the example to work fully, you need to run Internet Identity locally. [Check out the Internet Identity instructions on how to do this](https://smartcontracts.org/docs/quickstart/local-quickstart.html).
+1. Safari currently prevents the iFrame to load properly because of an issue with the boundary nodes (out of our control).
+2. First time authentication doesn't work as the iFrame fails to trigger the secure device selection (No further information so far).
 
-Copy `.env.local.template` to `.env.local`. If you have Internet Identity deployed locally and want to use it for authenticated calls, you need to provide the `II_CANISTER_ID` and set `DFX_NETWORK=local`.
+**We ship an example with this repo [check the example/README.md](./example/README.md) to run this locally**
 
-Get the II canister id by:
-
+## Install within your own project
 <code-group>
   <code-block label="Shell" active>
 
   ```bash
-  dfx canister id internet_identity
+  npm install --save @identity-labs/react-ic-ii-auth
   ```
 
   </code-block>
 </code-group>
 
+
+### Setup React IC II Auth to open auth flow within new tab
+
+```tsx
+import React from 'react'
+
+import {
+  InternetIdentityProvider,
+  useInternetIdentity
+} from '@identity-labs/react-ic-ii-auth'
+
+const AuthButthon = () => {
+  const { authenticate, signout, isAuthenticated, identity } = useInternetIdentity()
+  console.log('>> initialize your actors with', { identity })
+  return (
+    <button onClick={isAuthenticated ? authenticate : signout}>
+      {isAuthenticated ? 'Logout' : 'Login'}
+    </button>
+  )
+}
+
+const App = () => {
+  return (
+    <InternetIdentityProvider
+      authClientOptions={{
+        onSuccess: (identity) => console.log(
+          ">> initialize your actors with", {identity}
+        )
+        // NOTE: Overwrite identityProvider in dev mode
+        // defaults to "https://identity.ic0.app/#authorize"
+        identityProvider: `http://${process.env.II_CANISTER_ID}.localhost:8000/#authorize`
+      }}
+    >
+      <AuthButthon />
+    </InternetIdentityProvider>
+  )
+}
+
+export default App
 ```
-> Creating a wallet canister on the local network.
-> The wallet canister on the "local" network for user "<your_identity>" is "renrk-eyaaa-aaaaa-aaada-cai" 
-> rkp4c-7iaaa-aaaaa-aaaca-cai
+
+### Open II within iFrame
+
+```tsx
+import React from 'react'
+
+import {
+  InternetIdentityProvider,
+  useInternetIdentity,
+  AuthIframe
+} from '@identity-labs/react-ic-ii-auth'
+
+const AuthButthon = () => {
+  const [showModal, setShowModal] = React.useState(false)
+  const { authenticate, isAuthenticated, identity, identityProvider } = useInternetIdentity()
+
+  // THE IFRAME CURRENTLY IS NOT SUPPORTED ON SAFARI
+  const isSafari = navigator.userAgent.match(/(Safari)/)
+
+  console.log('>> initialize your actors with', { identity })
+
+  const handleAuthButtonClick = React.useCallback(() => {
+    setShowModal(true)
+  }, [])
+
+  const handleAuth = React.useCallback(async () => {
+    try {
+      await authenticate()
+    } catch (e) {
+      console.error(e)
+      setShowModal(false)
+    }
+  }, [authenticate])
+
+  return (
+    <>
+    <button onClick={isSafari ? handleAuth : authenticate}>
+      {isAuthenticated ? 'Logout' : 'Login'}
+    </button>
+    {/* THE IFRAME CURRENTLY IS NOT SUPPORTED ON SAFARI */}
+    {!isSafari && showModal && (
+      <div className="yourModalClass">
+        <AuthIframe src={identityProvider} onLoad={handleAuth} />
+      </div>
+    )}
+    </>
+  )
+}
+
+const App = () => {
+  return (
+    <InternetIdentityProvider
+      authClientOptions={{
+        onSuccess: (identity) => console.log(
+          ">> initialize your actors with", {identity}
+        )
+        // NOTE: Overwrite identityProvider in dev mode
+        // defaults to "https://identity.ic0.app/#authorize"
+        identityProvider: `http://${process.env.II_CANISTER_ID}.localhost:8000/#authorize`
+      }}
+    >
+      <AuthButthon />
+    </InternetIdentityProvider>
+  )
+}
+
+export default App
 ```
 
-Take the last line and put it into `.env.local`.
+### Run Internet Identity locally to use authenticated calls
 
-`.env.local` should then look something like this:
+In order to do authenticated calls against your local IC replica you need to run II locally.
 
-```javascript[.env.local]
-DFX_NETWORK=local
-II_CANISTER_ID=qhbym-qaaaa-aaaaa-aaafq-cai
-```
+[Read more how to setup II locally](./docs/setup-internet-identity.md)
 
-Now you can run `yarn ic:deploy` which deploys the example backend canister. When this is successful,
-proceed with running `yarn dev`.
-
-Your browser should automatically open [http://localhost:3000](http://localhost:3000).
-
-## Available Commands
-
-In the **examples** directory, you can run the following commands:
-
-### `yarn dev`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best
-performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
-
-### `yarn start`
-
-Requires `yarn build` first and runs the production build.
-
-### `yarn ic:deploy`
-
-Deploys the example backend canisters to your local network
+## Inspiration
+- https://github.com/dfinity/cancan/blob/031f31c0f45af72e42416043e1a2415642844d4e/src/utils/auth.tsx
+- https://github.com/krpeacock/ic-avatar/blob/main/src/avatar_assets/src/hooks.ts
