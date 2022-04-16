@@ -10,7 +10,7 @@ NFID is an app-less, strong portable authenticator offered by Internet Identity 
 This guide assumes an Internet Computer application exists to integrate NFID with. If this is your first application, we suggest you clone our [NFID auth client demo](https://github.com/internet-identity-labs/nfid-auth-client-demo) fork of Kyle Peacock's original.
 
 ## Replacing existing identity provider
-Change the existing identityProvider to:
+If you already have authentication set up in your Internet Computer app and want to switch your identity provider to NFID, simply change the existing `identityProvider` URL in your `authClient` to:
 ```
 https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize
 ``` 
@@ -25,19 +25,17 @@ We are working on a frontend plugin that packages a UX for your users to authent
 If you'd like to get started sooner, just know that this is the process and it is entirely separate from NFID.
 
 ## Open auth in new window instead of new tab
-We've added an option for authentication windows to open in a new window (HOW CAN THE USER CONFIGURE THIS?) and have added it as a parameter in the authClient options called windowOpenerFeatures. Just pass it html options like these default options we recommend passing:
+We've added an option for authentication windows to open in a new window (HOW CAN THE USER CONFIGURE THIS?). Just pass a new variable, `windowOpenerFeatures` with html options (like these default options we recommend passing) into your `authClient`:
 
 ```js
-// TODO code review
+identityProvider: "https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize",
 windowOpenerFeatures: 
   `left=${window.screen.width / 2 - 200}, `+
   `top=${window.screen.height / 2 - 300},` +
   `toolbar=0,location=0,menubar=0,width=400,height=600`
 ```
 ## Local NFID installation for authenticated local calls
-If you need an actor to make authenticated calls locally in your project, you will need to download our SDK.
-
-Then, make sure you have the [NFID-SDK](https://github.com/internet-identity-labs/NFID-SDK) repo cloned locally, adjacent to your project. 
+If you need an actor to make authenticated calls locally in your project, you will need to clone our [NFID-SDK](https://github.com/internet-identity-labs/NFID-SDK) repo adjacent to your project.
 
 ```bash
 cd ../nfid-sdk
@@ -83,4 +81,5 @@ loginButton.onclick = async () => {
 ```
 
 ### Sample NFID auth client demo
-[Here](https://github.com/internet-identity-labs/nfid-auth-client-demo) is a demo repo you can play around with in typescript.
+[Here](https://github.com/internet-identity-labs/nfid-auth-client-demo/tree/feature/nfid-auth-client-demo) is a demo repo you can play around with in typescript.
+[Here](https://github.com/internet-identity-labs/nfid-auth-client-demo/tree/vanilla-js) is a demo repo you can play around with in vanilla javascript.
