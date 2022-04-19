@@ -15,7 +15,7 @@ When a new user gets to your application without a previously registered NFID, t
 
 ### User starts on desktop
 Upon clicking the button to Sign in with NFID, users will be presented with a QR code to scan with their phone.
-![qr-code-desktop](qr-code-desktop.png)
+![qr-code-desktop](./qr-code-desktop.png)
 The web page will open the NFID registration flow where they'll go through the following steps:
 - Create a WebAuthn keypair (either with the device biometric or security key)
 - Enter captcha
@@ -23,7 +23,7 @@ The web page will open the NFID registration flow where they'll go through the f
 - Copy seed phrase and continue to log in to your app
 
 If the user's desktop computer supports FIDO, users will be prompted with a question whether they want to log in faster on this computer.
-![log-in-faster](log-in-faster.png)
+![log-in-faster](./log-in-faster.png)
 As on the phone, users will have the ability register this computer to their list of trusted devices they can use WebAuthn to authenticate with.
 
 If the user chose not to register their computer in this step, they'll be able to do so later.
@@ -32,7 +32,7 @@ At this point, you have the delegate identity with their principal ID.
 
 ### User starts on mobile
 Upon clicking the button to Sign in with NFID, users will be navigated to the NFID registration screen where they'll go through the same steps as if they scanned a QR code from desktop:
-![unknown-mobile](unknown-mobile.png)
+![unknown-mobile](./unknown-mobile.png)
 - Create a WebAuthn keypair (either with the device biometric or security key)
 - Enter captcha
 - Sync the public key of their WebAuthn keypair
