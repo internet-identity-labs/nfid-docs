@@ -15,7 +15,7 @@ If you already have authentication set up in your Internet Computer app and want
 https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize
 ``` 
 where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window.
-![account_selection_screen](./account_selection_screen.png)
+![account_selection_screen](account_selection_screen.png)
 
 ## Migrating existing users
 If you have existing users, their user profile type will need a has_many relationship to principals instead of a has_one.
@@ -56,7 +56,7 @@ yarn tunnel
 ``` 
 
 Copy the assigned domain from ngrok output
-![running-ngrok](./running-ngrok.png)
+![running-ngrok](running-ngrok.png)
 as the TUNNEL_DOMAIN in your authClient:
 ```js
 const APPLICATION_NAME = "Your%20App%20Name";
