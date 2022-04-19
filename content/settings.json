@@ -11,10 +11,10 @@
     "logo": true,
     "title": false
   },
-  "github": "InternetIdentityLabs",
+  "github": "internet-identity-labs",
   "twitter": "@IdentityMaxis",
   "colors": {
-    "primary": "#5163ba"
+    "primary": "#0e8aff"
   },
   "credits": false
 }
