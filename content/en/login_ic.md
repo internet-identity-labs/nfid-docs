@@ -25,7 +25,7 @@ We are working on a frontend plugin that packages a UX for your users to authent
 If you'd like to get started sooner, just know that this is the process and it is entirely separate from NFID.
 
 ## Open auth in new window instead of new tab
-We've added an option for authentication windows to open in a new window (HOW CAN THE USER CONFIGURE THIS?). Just pass a new variable, `windowOpenerFeatures` with html options (like these default options we recommend passing) into your `authClient`:
+We've added an option for authentication windows to open in a new window. Just pass a new variable, `windowOpenerFeatures` with html options (like these default options we recommend passing) into your `authClient`:
 
 ```js
 identityProvider: "https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize",

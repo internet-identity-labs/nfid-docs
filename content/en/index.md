@@ -1,19 +1,14 @@
 ---
 title: Introduction
-subtitle: User authentication that is effortless to integrate, implement, and test.
+subtitle: One-touch multi-factor authentication that is effortless to integrate, implement, and test.
 position: 1
 category: Getting Started
 features:
   - Decentralized, self-sovereign identity provider
   - No usernames or passwords
   - Biometric login on any device, platform, or channel
-  - Proof of humanity
-  - Privacy-preserving wallet (in development)
-  - Instant, gas-less swaps (in development)
-  - One-click checkout (in development)
+  - Verified phone credential (in testing)
 ---
-
-# TODO - make Getting Started the first section
 
 <alert type="info">
 Follow our latest updates <a href="https://twitter.com/@IdentityMaxis" target="_blank">@IdentityMaxis</a>
