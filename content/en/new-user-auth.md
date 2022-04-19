@@ -1,6 +1,6 @@
 ---
 title: New NFID authentication
-position: 1
+position: 4
 category: User Flows
 ---
 

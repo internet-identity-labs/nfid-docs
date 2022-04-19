@@ -1,6 +1,6 @@
 ---
 title: Existing user authentication
-position: 2
+position: 5
 category: User Flows
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Internet Computer login
-subtitle: Add authentication to your Internet Computer application in 4 easy steps.
-position: 1
+position: 3
 category: Quick Starts
 ---
 
