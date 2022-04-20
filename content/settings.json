@@ -11,7 +11,9 @@
     "logo": true,
     "title": false
   },
-  "github": "internet-identity-labs",
+  "github": "dostro/nfid-docs",
+  "defaultBranch": "master",
+  "defaultDir": "",
   "twitter": "@IdentityMaxis",
   "colors": {
     "primary": "#0e8aff"
