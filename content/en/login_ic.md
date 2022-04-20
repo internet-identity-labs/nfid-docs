@@ -14,7 +14,7 @@ If you already have authentication set up in your Internet Computer app and want
 https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize
 ``` 
 where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window.
-![account_selection_screen](account_selection_screen.png)
+<img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
 
 ## Migrating existing users
 If you have existing users, their user profile type will need a has_many relationship to principals instead of a has_one.
