@@ -1,5 +1,6 @@
 {
   "title": "NFID Developer Hub",
+  "site_name": "NFID Developer Hub",
   "description": "The one-touch MFA protocol",
   "layout": "docs",
   "logo": {
@@ -15,6 +16,7 @@
   "defaultDir": "",
   "url": "https://docs.nfid.one",
   "twitter": "@IdentityMaxis",
+  "image": "/nfid_og.jpg",
   "colors": {
     "primary": "#0e8aff"
   },

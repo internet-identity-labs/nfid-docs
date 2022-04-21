@@ -30,15 +30,18 @@ export default theme({
         name: 'description',
         content: 'The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform.'
       },
-      { hid: 'og-type', property: 'og:type', content: 'website' },
-      { hid: 'og-url', property: 'og:url', content: 'https://docs.nfid.one' },
-      { hid: 'og-title', property: 'og:title', content: 'Add one-touch MFA to your apps today' },
-      { hid: 'og-desc', property: 'og:description', content: 'The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform.' },
-      { hid: 'og-image', property: 'og:image',
+      { hid: 'og:title', property: 'og:title', content: 'Add one-touch MFA to your apps today' },
+      { hid: 'og:desc', property: 'og:description', content: 'The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform.' },
+      { hid: 'og:image', property: 'og:image',
         content: 'https://docs.nfid.one/nfid_og.jpg'
       },
-      { hid: 'og-image-width', property: 'og:image:width', content: '1200' },
-      { hid: 'og-image-height', property: 'og:image:height', content: '627' },
+      { hid: 'og:image:width', property: 'og:image:width', content: '1200' },
+      { hid: 'og:image:height', property: 'og:image:height', content: '627' },
+      {
+        hid: "twitter:title",
+        name: "twitter:title",
+        content: 'Add one-touch MFA to your apps today',
+      },
       {
         hid: "twitter:description",
         name: "twitter:description",
@@ -47,7 +50,7 @@ export default theme({
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: 'https://docs.nfid.one/nfid_og.jpg',
+        content: '/nfid_og.jpg',
       },
     ],
   },
