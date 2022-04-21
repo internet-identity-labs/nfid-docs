@@ -1,7 +1,6 @@
 {
   "title": "NFID Developer Hub",
-  "description": "Description goes here",
-  "url": "http://localhost:3000/",
+  "description": "The one-touch MFA protocol",
   "layout": "docs",
   "logo": {
     "light": "/logo-dark.png",
@@ -14,6 +13,7 @@
   "github": "dostro/nfid-docs",
   "defaultBranch": "master",
   "defaultDir": "",
+  "url": "https://docs.nfid.one",
   "twitter": "@IdentityMaxis",
   "colors": {
     "primary": "#0e8aff"

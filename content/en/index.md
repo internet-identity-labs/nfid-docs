@@ -1,7 +1,8 @@
 ---
-title: Introduction
+title: NFID Introduction
 subtitle: One-touch multi-factor authentication that is effortless to integrate, implement, and test.
 position: 1
+description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 category: Getting Started
 features:
   - Decentralized, self-sovereign identity provider

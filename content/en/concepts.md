@@ -3,6 +3,7 @@ title: NFID Concepts 101
 subtitle: Learn more about NFID from the key concepts below.
 position: 2
 category: Getting Started
+description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 ---
 
 ## Authentication

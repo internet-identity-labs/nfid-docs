@@ -2,6 +2,7 @@
 title: New NFID authentication
 position: 4
 category: User Flows
+description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 ---
 
 NFID provides a secure, frictionless authentication experience across all end-user devices and use cases—whether they are logging into your website or mobile app, confirming a transaction, performing a step-up authentication, or contacting your Call Center for support.

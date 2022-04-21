@@ -2,6 +2,7 @@
 title: Internet Computer login
 position: 3
 category: Quick Starts
+description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 ---
 
 NFID is an app-less, strong portable authenticator offered by Internet Identity Labs. NFID uses FIDO-based biometrics for secure, convenient, and consistent passwordless authentication, and Dfinity's [Internet Identity](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc) service for delegating identities to each new scope. This guide explains how to integrate NFID into your web application — including the changes required for your login page and backend canister. Learn more about [NFID](/)

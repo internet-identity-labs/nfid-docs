@@ -2,6 +2,7 @@
 title: Existing user authentication
 position: 5
 category: User Flows
+description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 ---
 
 ## Users with NFID
