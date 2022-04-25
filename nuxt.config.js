@@ -17,9 +17,9 @@ export default theme({
     defaultLocale: "en",
   },
   buildModules: [
-    // ['@nuxtjs/google-analytics', {
-    //   id: 'UA-12301-2'
-    // }]
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-226981067-1'
+    }]
   ],
   head: {
     meta: [
