@@ -12,7 +12,7 @@ This guide assumes an Internet Computer application exists to integrate NFID wit
 ## Replacing existing identity provider
 If you already have authentication set up in your Internet Computer app and want to switch your identity provider to NFID, simply change the existing `identityProvider` URL in your `authClient` to:
 ```
-https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize
+https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize
 ``` 
 where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window.
 <img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
@@ -28,7 +28,7 @@ If you'd like to get started sooner, just know that this is the process and it i
 We've added an option for authentication windows to open in a new window. Just pass a new variable, `windowOpenerFeatures` with html options (like these default options we recommend passing) into your `authClient`:
 
 ```js
-identityProvider: "https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize",
+identityProvider: "https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize",
 windowOpenerFeatures: 
   `left=${window.screen.width / 2 - 200}, `+
   `top=${window.screen.height / 2 - 300},` +
@@ -61,7 +61,7 @@ as the TUNNEL_DOMAIN in your authClient:
 ```js
 const APPLICATION_NAME = "Your%20App%20Name";
 const TUNNEL_DOMAIN = "https://750321244b61.ngrok.io";
-const PRODUCTION_NFID_URL = "https://3y5ko-7qaaa-aaaal-aaaaq-cai.ic0.app/authenticate/?applicationName="+APPLICATION_NAME+"#authorize";
+const PRODUCTION_NFID_URL = "https://nfid.one/authenticate/?applicationName="+APPLICATION_NAME+"#authorize";
 
 loginButton.onclick = async () => {
   await authClient.login({
