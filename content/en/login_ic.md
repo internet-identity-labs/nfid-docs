@@ -12,9 +12,9 @@ This guide assumes an Internet Computer application exists to integrate NFID wit
 ## Replacing existing identity provider
 If you already have authentication set up in your Internet Computer app and want to switch your identity provider to NFID, simply change the existing `identityProvider` URL in your `authClient` to:
 ```
-https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize
+https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}&applicationLogo={YOUR%20LOGO%20URL}#authorize
 ``` 
-where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window.
+where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window, and {YOUR%20LOGO%20URL} is the URL for a 37x37px logo of your application.
 <img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
 
 ## Migrating existing users
@@ -28,7 +28,7 @@ If you'd like to get started sooner, just know that this is the process and it i
 We've added an option for authentication windows to open in a new window. Just pass a new variable, `windowOpenerFeatures` with html options (like these default options we recommend passing) into your `authClient`:
 
 ```js
-identityProvider: "https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}#authorize",
+identityProvider: "https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}&applicationLogo={YOUR%20LOGO%20URL}#authorize",
 windowOpenerFeatures: 
   `left=${window.screen.width / 2 - 200}, `+
   `top=${window.screen.height / 2 - 300},` +

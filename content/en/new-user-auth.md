@@ -15,16 +15,16 @@ You don’t need to manage the registration status of users or devices, and expl
 When a new user gets to your application without a previously registered NFID, they will need a FIDO-based device to create one.
 
 ### User starts on desktop
-Upon clicking the button to Sign in with NFID, users will be presented with a QR code to scan with their phone.
+Upon clicking the button to Sign in with NFID, users will be presented with an option to scan a QR code with their phone or other sign in options, which at the moment is simply a method to recover a cleared local storage.
+<img src="sign-in-options.png" style="width:200px;margin:auto;"></img>
 <img src="qr-code-desktop.png" style="width:200px;margin:auto;"></img>
 The web page will open the NFID registration flow where they'll go through the following steps:
 - Create a WebAuthn keypair (either with the device biometric or security key)
 - Enter captcha
-- Sync the public key of their WebAuthn keypair
-- Copy seed phrase and continue to log in to your app
+- Sync the public key of their WebAuthn keypair and sign in to the app
 
 If the user's desktop computer supports FIDO, users will be prompted with a question whether they want to log in faster on this computer.
-<img src="log-in-faster.png" style="width:200px;margin:auto;"></img>
+<img src="sign-in-faster.png" style="width:200px;margin:auto;"></img>
 As on the phone, users will have the ability register this computer to their list of trusted devices they can use WebAuthn to authenticate with.
 
 If the user chose not to register their computer in this step, they'll be able to do so later.
@@ -36,7 +36,6 @@ Upon clicking the button to Sign in with NFID, users will be navigated to the NF
 <img src="unknown-mobile.png" style="width:200px;margin:auto;"></img>
 - Create a WebAuthn keypair (either with the device biometric or security key)
 - Enter captcha
-- Sync the public key of their WebAuthn keypair
-- Copy seed phrase and continue to log in to your app
+- Sync the public key of their WebAuthn keypair and sign in to the app
 
 At this point, you have the delegate identity with their principal ID.

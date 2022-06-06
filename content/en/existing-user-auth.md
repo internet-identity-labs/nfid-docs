@@ -13,6 +13,6 @@ As the application developer, you can configure how many accounts each NFID can 
 
 If you allow more than one, users will need to unlock their NFID first and select the account with which they want to continue.
 <img src="unlock-nfid.png" style="width:200px;margin:auto;"></img>
-<img src="account-selection.png" style="width:200px;margin:auto;"></img>
+<img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
 
 Once an account is selected, you will receive the delegate identity with its principal ID.
