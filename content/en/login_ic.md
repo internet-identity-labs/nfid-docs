@@ -60,8 +60,11 @@ Copy the assigned domain from ngrok output
 as the TUNNEL_DOMAIN in your authClient:
 ```js
 const APPLICATION_NAME = "Your%20App%20Name";
-const TUNNEL_DOMAIN = "https://750321244b61.ngrok.io";
-const PRODUCTION_NFID_URL = "https://nfid.one/authenticate/?applicationName="+APPLICATION_NAME+"#authorize";
+const APPLICATION_LOGO_URL = "https%3A%2F%2Flogo.clearbit.com%2Fclearbit.com";
+const AUTH_PATH_PARAMS = "authenticate/?applicationName="+APPLICATION_NAME+"&applicationLogo="+APPLICATION_LOGO_URL+"#authorize";
+
+const TUNNEL_DOMAIN = "https://750321244b61.ngrok.io/"+AUTH_PATH_PARAMS;
+const PRODUCTION_NFID_URL = "https://nfid.one/"+AUTH_PATH_PARAMS;
 
 loginButton.onclick = async () => {
   await authClient.login({
@@ -72,8 +75,7 @@ loginButton.onclick = async () => {
     // Otherwise use the local replica
     identityProvider:
       process.env.DFX_NETWORK === "ic"
-        ? PRODUCTION_NFID_URL
-        : TUNNEL_DOMAIN+"/authenticate/?applicationName="+APPLICATION_NAME+"#authorize",
+        ? PRODUCTION_NFID_URL : TUNNEL_DOMAIN,
     // Maximum authorization expiration is 8 days
     maxTimeToLive: days * hours * nanoseconds,
   });
