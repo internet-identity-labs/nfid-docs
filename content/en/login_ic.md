@@ -14,7 +14,7 @@ If you already have authentication set up in your Internet Computer app and want
 ```
 https://nfid.one/authenticate/?applicationName={YOUR%20APPLICATION%20NAME}&applicationLogo={YOUR%20LOGO%20URL}#authorize
 ``` 
-where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window, and {YOUR%20LOGO%20URL} is the URL for a 37x37px logo of your application.
+where `{YOUR%20APPLICATION%20NAME}` is the name you'd like displayed in the NFID authentication window, and `{YOUR%20LOGO%20URL}` is the URL for a 37x37px logo of your application.
 <img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
 
 ## Migrating existing users
