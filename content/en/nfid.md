@@ -1,6 +1,6 @@
 ---
 title: What is NFID?
-subtitle: A "wallet" is a single key. NFID manages hundreds of keys automatically.
+subtitle: You are unique, just like your NFID.
 position: 1
 description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 category: Overview
@@ -11,9 +11,18 @@ features:
   - Biometric login on any device, platform, or channel
 ---
 
-## NFID in more detail
-NFID is an app-less portable authenticator built by Internet Identity Labs, built on Dfinity Foundation's Internet Computer, and leverages Dfinity's Internet Identity, the strongest trustless cryptographic delegation system on the Internet.
-NFID uses FIDO-based biometrics for secure, frictionless, and consistent customer authentication. With one click to create new accounts or sign into existing ones, NFID eliminates passwords and the inconveniences of traditional credential-based logins.
+NFID means something different depending on whether you're an application developer looking to establish a trustworthy relationship with your users, or you're the user looking to establish a trustworthy relationship with an application.
+
+As an application developer, you want to know the information you're getting from your users is honest.
+
+As a user, you want to be anonymous by default and share only the necessary information about yourself that the application is requesting.
+
+## Non-fungible identity
+An identity is a composite of all the things that make you *you*. You likely have citizenship status with at least one country, you may have a license to operate vehicles, you have a social media profile, you have relationships with your friends and family that you share certain aspects of your life with, you have money in a bank or in a crypto wallet, you own assets, you have preferences, likes, dislikes, good and bad reputation, and so on. 
+
+There's no replacement for you because you're unique.
+
+That's NFID - it's your identity on the internet and it keeps you anonymous by default.
 
 ## Features
 <list :items="features"></list>
