@@ -2,7 +2,7 @@
 title: NFID Concepts 101
 subtitle: Learn more about NFID from the key concepts below.
 position: 2
-category: Getting Started
+category: Overview
 description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 ---
 
@@ -27,7 +27,7 @@ NFID allows users to securely regain access to their account from a new device. 
 
 This can be done in one of two ways right now, but more recovery methods will be added towards the end of 2022/2023. A device-based recovery flow allows the user to register their new device only once they authorize recovery using a device they previously registered. A recovery-code-based recovery flow allows them to get this authorization from their recovery code—the phrase they were given when they registered their NFID. In the first case, authorization must be provided using a device that was registered with biometrics since account recovery is a sensitive operation that requires strong authentication. In the second case, NFID relies on the security and careful custody with which users save their recovery codes.
 
-Note: Aside from recovery flows, users can link devices to their account directly using the NFID app. In addition, a desktop device can be linked simply by enabling biometrics on this device upon completing an authentication using a mobile device.
+Note: Aside from recovery flows, users can link additional authenticator devices to their account.
 
 ## Registered Devices
 A user can have multiple devices that are bound to their account. This list includes any device that they used to authenticate, which is not necessarily the device they used to access their account. For example, a user can log into your website from their desktop device after using their mobile device to authenticate.

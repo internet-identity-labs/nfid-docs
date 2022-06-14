@@ -1,48 +1,21 @@
 ---
-title: NFID Introduction
-subtitle: One-touch multi-factor authentication that is effortless to integrate, implement, and test.
-position: 1
+title: Home
+position: 0
 description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
-category: Getting Started
 features:
   - Decentralized, self-sovereign identity provider
   - No usernames or passwords
   - Biometric login on any device, platform, or channel
-  - Verified phone credential (in testing)
 ---
 
-<alert type="info">
-Follow our latest updates <a href="https://twitter.com/@IdentityMaxis" target="_blank">@IdentityMaxis</a>
-</alert>
+<img src="nfid.png" style="width:100%;max-width:500px;margin:auto;margin-bottom:50px"></img>
 
-## What is NFID?
-NFID is an app-less, strong portable authenticator built by Internet Identity Labs, built on Dfinity Foundation's Internet Computer, and leverages Dfinity's Internet Identity, the strongest trustless cryptographic delegation system on the Internet.
-NFID uses FIDO-based biometrics for secure, frictionless, and consistent customer authentication. With one click to create new accounts or sign into existing ones, NFID eliminates passwords and the inconveniences of traditional credential-based logins.
+Welcome to the NFID developer documentation. 
 
-NFID is a great solution for various use cases, including:
+NFID is a pluggable auth infrastructure that streamlines the onboarding of both mainstream and crypto native users in under a minute by providing experiences that they're most comfortable with. Unlike any other identity provider, NFID automatically generates a new key for every new account without users taking any additional action.
 
-- Passwordless authentication for web and mobile applications.
-- User authentication for call centers, IVR, and voice assistance.
-- Frictionless new account opening.
-- Secure verification for infrequent users.
-- Applications selling goods or services denominated in ICP.
-- Applications requiring proof of humanity with or without zero-knowledge.
-- Applications requiring KYC/AML with or without zero-knowledge.
-- Applications requiring identities prove ownership of some digital asset, with or without zero-knowledge.
+A "wallet" is a single key. An identity layer for the internet is a "metawallet" that manages app-specific wallets and grants the user privacy-preserving superpowers by supporting zk proofs and transfers across those wallets.
 
-## Features
-<list :items="features"></list>
+Our mission with NFID is for it to become the identity layer for the internet.
 
-## Authentication and Trust
-NFID uses device-based FIDO biometrics to provide a secure and easy-to-deploy authentication process that can be used for any app, in any channel.
-
-Here's how it works:
-
-- User performs an action that requires authentication (such as login).
-- User executes an authentication process with NFID, which may also include registering to NFID and registering a strong authenticator (e.g., FIDO2 biometrics).
-- Upon successful authentication, you receive an identity delegate, which preserves the user's privacy and provides nothing but a principal identifier to index the user on.
-- If needed, you request more information from the user whenever you need (e.g. proof of a unique, verified carrier phone number or proof of ownership of an NFT in some collection). You may request this information as gated entry to some portion of your app.
-- In the future, we would like to work with you on how to report additional information on the user back to NFID (e.g. username registration for new users).
-
-## Online playground
-To experiment with the registration flows for NFID, use our demo sandbox environment <a href="https://wzkxy-vyaaa-aaaaj-qab3q-cai.ic0.app/" target="_blank">here</a>
+Follow our latest updates <a href="https://twitter.com/@IdentityMaxis" target="_blank">@IdentityMaxis</a>.
