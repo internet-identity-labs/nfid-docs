@@ -37,7 +37,7 @@ We've added an option to open authentication windows in a new window instead of 
 windowOpenerFeatures: 
   `left=${window.screen.width / 2 - 200}, `+
   `top=${window.screen.height / 2 - 300},` +
-  `toolbar=0,location=0,menubar=0,width=400,height=600`
+  `toolbar=0,location=0,menubar=0,width=525,height=705`
 ```
 
 <img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
