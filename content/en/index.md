@@ -1,7 +1,7 @@
 ---
 title: Home
 position: 0
-description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
+description: "The complete guide to NFID: the identity layer for the internet."
 features:
   - Decentralized, self-sovereign identity provider
   - No usernames or passwords

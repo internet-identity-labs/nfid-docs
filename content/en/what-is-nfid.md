@@ -2,7 +2,7 @@
 title: What is NFID?
 subtitle: You are unique, just like your NFID.
 position: 1
-description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
+description: "The complete guide to NFID: the identity layer for the internet."
 category: Overview
 features:
   - Decentralized, self-sovereign identity provider

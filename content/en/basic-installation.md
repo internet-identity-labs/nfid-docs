@@ -2,7 +2,7 @@
 title: Basic installation
 position: 3
 category: Get Started
-description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
+description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
 ## Requirements for Internet Computer applications
