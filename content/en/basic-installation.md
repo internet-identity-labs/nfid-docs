@@ -43,7 +43,7 @@ windowOpenerFeatures:
 <img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
 
 ## Generating the same user identifiers across your domains
-NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions for [domain migration](migrating-domains.md).
+NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions for [multiple domains](multiple-domains.md).
 
 ## Migrating existing users
 If you have existing users, their user profile type will need a has_many relationship to principals instead of a has_one.
