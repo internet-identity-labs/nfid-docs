@@ -63,9 +63,3 @@ Example
 ```
 
 View the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#alternative-frontend-origins) for more information.
-
-## Doesn't this violate user privacy?
-When an alternative origin assigns a canister as its derivation origin, that alternative origin effectively delegates administrative control of the application to the derivation origin. This feature is also impossible without consent from the derivation origin (via the `.well-known` json) and from the alternative origin (via the `derivationOrigin` parameter). If one of either the alternative or derivation origins drop their side of the consent, NFID will immediately begin generating new identifiers for an application's users. All of this together makes it exceptionally unlikely that any developer would willingly accept such an existential risk of the future success of their application to a third party.
-
-## Should I use another application's Derivation Origin?
-No. Adding another application as your derivation origin places an existential risk of the future success of your application on theirs. **Just don't do it**.
