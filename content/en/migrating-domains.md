@@ -5,7 +5,7 @@ category: Get Started
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-## Switching from a canister ID domain
+## Switching from a canister URL to a canonical domain
 NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
 
 1. Ensure your canister implements the `https_request` query call like [this](https://github.com/dfinity/interface-spec/blob/master/spec/index.adoc#the-http-gateway-protocol)
