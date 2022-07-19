@@ -1,0 +1,71 @@
+---
+title: Migrating domains
+position: 4
+category: Get Started
+description: "The complete guide to NFID: the identity layer for the internet."
+---
+
+## Switching from a canister ID domain
+NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
+
+1. Ensure your canister implements the `https_request` query call like [this](https://github.com/dfinity/interface-spec/blob/master/spec/index.adoc#the-http-gateway-protocol)
+2. Set the CORS response header `[Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)` to allow the NFID origin `https://nfid.one`
+3. Add the `alternativeOrigins` json to `https://<YOUR-CANISTER-ID>.ic0.app/.well-known/ii-alternative-origins`
+```js
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "II Alternative Origins Principal Derivation Origins",
+  "description": "An object containing the alternative frontend origins of the given canister, which are allowed to use a canonical canister URL (https://<canister_id>.ic0.app or https://<canister_id>.raw.ic0.app) for principal derivation.",
+  "type": "object",
+  "properties": {
+    "alternativeOrigins": {
+      "description": "List of allowed alternative frontend origins",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [ "alternativeOrigins" ]
+}
+```
+Example
+```js
+{
+  "alternativeOrigins": [
+    "https://alternative-1.com",
+    "https://www.nice-frontend-name.org"
+  ]
+}
+```
+4. Add the `derivationOrigin` key and your frontend's canister URL as the value to the NFID configuration parameters:
+```js
+  loginButton.onclick = async () => {
+    await authClient.login({
+      onSuccess: async () => {
+        handleAuthenticated(authClient);
+      },
+      identityProvider:
+        process.env.DFX_NETWORK === "ic"
+          ? "https://nfid.one" + AUTH_PATH
+          : process.env.LOCAL_NFID_CANISTER + AUTH_PATH,
+      // Maximum authorization expiration is 30 days
+      maxTimeToLive: days * hours * nanosecondsPerHour,
+      windowOpenerFeatures: 
+        `left=${window.screen.width / 2 - 525 / 2}, `+
+        `top=${window.screen.height / 2 - 705 / 2},` +
+        `toolbar=0,location=0,menubar=0,width=525,height=705`,
+      derivationOrigin: "https://<YOUR-CANISTER-ID>.ic0.app"
+    });
+  };
+```
+
+View the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#alternative-frontend-origins) for more information.
+
+## Doesn't this violate user privacy?
+When an alternative origin assigns a canister as its derivation origin, that alternative origin effectively delegates administrative control of the application to the derivation origin. This feature is also impossible without consent from the derivation origin (via the `.well-known` json) and from the alternative origin (via the `derivationOrigin` parameter). If one of either the alternative or derivation origins drop their side of the consent, NFID will immediately begin generating new identifiers for an application's users. All of this together makes it exceptionally unlikely that any developer would willingly accept such an existential risk of the future success of their application to a third party.
+
+## Should I use another application's Derivation Origin?
+No. Adding another application as your derivation origin places an existential risk of the future success of your application on theirs. **Just don't do it**.

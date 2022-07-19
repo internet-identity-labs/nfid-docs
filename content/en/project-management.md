@@ -1,6 +1,6 @@
 ---
 title: Project management
-position: 4
+position: 5
 category: Get Started
 description: "The complete guide to NFID: the identity layer for the internet."
 ---

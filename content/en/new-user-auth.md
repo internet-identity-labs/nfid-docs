@@ -1,6 +1,6 @@
 ---
 title: New NFID authentication
-position: 5
+position: 6
 category: User Flows
 description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
 ---
