@@ -1,6 +1,6 @@
 ---
 title: Multiple domains
-position: 4
+position: 21
 category: Get Started
 description: "The complete guide to NFID: the identity layer for the internet."
 ---

@@ -1,7 +1,7 @@
 ---
 title: Privacy policy
 subtitle: "Latest update: 15 June 2022"
-position: 8
+position: 90
 category: Legal
 ---
 * * *

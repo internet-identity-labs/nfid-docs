@@ -1,6 +1,6 @@
 ---
 title: Existing user authentication
-position: 7
+position: 70
 category: User Flows
 description: "The complete guide to NFID: the identity layer for the internet."
 ---

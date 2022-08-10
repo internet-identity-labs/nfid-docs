@@ -1,6 +1,6 @@
 ---
 title: Basic installation
-position: 3
+position: 20
 category: Get Started
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
