@@ -37,8 +37,8 @@ Verify that the user has a phone number associated with their account.
 -   `createdDate: Date`
 
 The `result` can come back as the following:
-If `true`, the phone number has not yet been registered with your app 
-If `false`, it has been registered 
+If `true`, whatever the phone number is, it has not yet been registered with your app on any other principal
+If `false`, it has already been registered on another principal
 If `undefined`, the user declined to share the proof
 
 **Note**
