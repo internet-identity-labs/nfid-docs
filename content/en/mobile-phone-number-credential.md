@@ -36,7 +36,10 @@ Verify that the user has a phone number associated with their account.
 -   `domain: string`
 -   `createdDate: Date`
 
-The result can currently also come back as `undefined` in the case a user rejects the consent to reveal a proof to you. We are working on returning a different type, but for now you should handle this case directly.
+The `result` can come back as the following:
+If `true`, the phone number has not yet been registered with your app 
+If `false`, it has been registered 
+If `undefined`, the user declined to share the proof
 
 **Note**
 
