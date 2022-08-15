@@ -30,9 +30,9 @@ Verify that the user has a phone number associated with their account.
 **Returns**
 
 The `result` can come back as the following:
--   If `true`, whatever the phone number is, it has not yet been registered with your app on any other principal
--   If `false`, it has already been registered on another principal
--   If `undefined`, the user declined to share the proof
+-   If `0`, whatever the phone number is, it has not yet been registered with your app on any other principal
+-   If `1`, it has already been registered on another principal
+-   If `2`, the user declined to share the proof
 
 **Note**
 
