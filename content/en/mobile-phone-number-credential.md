@@ -64,7 +64,10 @@ Or a simple implementation from our SDK:
   ```typescript
   import { verifyPhoneNumberCredential } from "@nfid/credentials";
 
-  verifyPhoneNumberCredential(identity.getPrincipal().toText());
+  const verificationResult = verifyPhoneNumberCredential(identity.getPrincipal().toText());
   ```
+  
   **Returns**
-  `boolean`
+
+  -   `verificationResult`
+      -   `boolean: "TRUE" | "FALSE"` indicates the result of the verification request. `TRUE` indicates the credential was not tampered with. `FALSE` indicates that the credential may have been tampered with or that the credential expired and you should try again.
