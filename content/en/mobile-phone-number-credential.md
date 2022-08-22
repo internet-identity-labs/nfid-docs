@@ -54,20 +54,7 @@ const result = await requestPhoneNumberCredential(identity);
 
 It is possible for a bad actor to attempt to manipulate a credential, and this necessitates a trustable method for verifying a credential. This is provided by the `is_phone_number_approved` method on our blackholed "verifier" canister, which is tamper proof and keeps hashed records of all phone number credentials. With this verification step, the complete flow would look like this:
 
-```mermaid
-sequenceDiagram
-    participant Your App
-    participant Your App (BE)
-    participant NFID Frontend
-    participant Verifier
-
-    Your App->>NFID Frontend: requestPhoneNumberCredential(identity)
-    note over NFID Frontend: ...Credential Flow...
-    NFID Frontend->>Your App: Credential
-    Your App->>Your App (BE): verifyPhoneNumberCredential(principal)
-    Your App (BE)->>Verifier: is_phone_number_approved(principal)
-    Verifier->>Your App (BE): bool
-```
+<img src="phone-credential-sequence-diagram.png"></img>
 
 The full interface for this method is </br>
 `is_phone_number_approved(principal: string) : bool`</br>
