@@ -12,7 +12,7 @@ This guide assumes familiarity with building on the IC. More information can be 
 - @dfinity/agent, @dfinity/identity, and @dfinity/auth-client node packages >v0.11.0
 
 ## The authentication client
-For a basic typescript integration inclusive of how to make authenticated calls locally in your development environment, follow along with our fork of Kyle Peacock's repository [here for typescript](https://github.com/internet-identity-labs/nfid-auth-client-demo/tree/feature/nfid-auth-client-demo) and [here](https://github.com/internet-identity-labs/nfid-auth-client-demo/tree/vanilla-js) for vanilla javascript.
+For a basic typescript integration inclusive of how to make authenticated calls locally in your development environment, follow along with our fork of Kyle Peacock's repository [here for typescript](https://github.com/internet-identity-labs/nfid-auth-client-demo/tree/feature/nfid-auth-client-demo).
 
 ## Replacing existing identity provider
 If you already have Internet Identity authentication set up and want to switch to NFID, simply change the existing `identityProvider` URL in your `authClient.login({})` and customize with your application's name and logo:
