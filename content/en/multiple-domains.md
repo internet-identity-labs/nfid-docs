@@ -62,6 +62,8 @@ Example
   };
 ```
 
+**Note:** To prevent misuse of this feature, the number of alternative origins _must not_ be greater than 10.
+
 View the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#alternative-frontend-origins) for more information.
 
 ## Doesn't this violate user privacy?
