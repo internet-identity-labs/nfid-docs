@@ -8,9 +8,15 @@ description: "The complete guide to NFID: the identity layer for the internet."
 ## Generating the same user identifier across multiple domains
 NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
 
-1. Ensure your canister implements the `https_request` query call like [this](https://github.com/dfinity/interface-spec/blob/master/spec/index.adoc#the-http-gateway-protocol)
-2. Set the CORS response header [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) to allow the NFID origin `https://nfid.one`
-3. Add the `alternativeOrigins` json to `https://<YOUR-CANISTER-ID>.ic0.app/.well-known/ii-alternative-origins`
+<ol>
+  <li>
+    Ensure your canister implements the `https_request` query call like [this](https://github.com/dfinity/interface-spec/blob/master/spec/index.adoc#the-http-gateway-protocol)
+  </li>
+  <li>
+    Set the CORS response header [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) to allow the NFID origin `https://nfid.one`
+  </li>
+  <li>
+    Add the `alternativeOrigins` json to `https://<YOUR-CANISTER-ID>.ic0.app/.well-known/ii-alternative-origins`
 ```js
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -40,7 +46,9 @@ Example
   ]
 }
 ```
-4. Add the `derivationOrigin` key and your frontend's canister URL as the value to the NFID configuration parameters:
+  </li>
+  <li>
+    Add the `derivationOrigin` key and your frontend's canister URL as the value to the NFID configuration parameters:
 ```js
   loginButton.onclick = async () => {
     await authClient.login({
@@ -61,7 +69,7 @@ Example
     });
   };
 ```
-
+  </li>
 **Note:** To prevent misuse of this feature, the number of alternative origins _must not_ be greater than 10.
 
 View the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#alternative-frontend-origins) for more information.
