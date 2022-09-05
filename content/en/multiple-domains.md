@@ -11,7 +11,7 @@ NFID is an anonymizing identity protocol that generates new identifiers for each
 <ol>
   <li>
     
-Ensure you have `agent-js`, `auth-client`, and `authentication` >= v0.12.1
+Ensure you have `agent-js`, `auth-client`, `authentication`, `candid`, `identity`, and `principal` >= v0.12.1
     
   </li>
     
