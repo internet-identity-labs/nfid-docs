@@ -11,6 +11,12 @@ NFID is an anonymizing identity protocol that generates new identifiers for each
 <ol>
   <li>
     
+Ensure you have `agent-js` >= v0.12.1
+    
+  </li>
+    
+  <li>
+    
 Ensure your canister implements the `https_request` query call like [this](https://github.com/dfinity/interface-spec/blob/master/spec/index.adoc#the-http-gateway-protocol)
     
   </li>
