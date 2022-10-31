@@ -21,7 +21,7 @@ If you already have Internet Identity authentication set up and want to switch t
   const APPLICATION_NAME = "Your%20Application%20Name";
 
   // URL to 37x37px logo of your application (URI encoded)
-  const APPLICATION_LOGO_URL = "https%3A%2F%2Flogo.clearbit.com%2Fclearbit.com";
+  const APPLICATION_LOGO_URL = "https://nfid.one/icons/favicon-96x96.png";
 
   const AUTH_PATH = "/authenticate/?applicationName="+APPLICATION_NAME+"&applicationLogo="+APPLICATION_LOGO_URL+"#authorize";
 
