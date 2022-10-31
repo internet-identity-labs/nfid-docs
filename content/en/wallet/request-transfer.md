@@ -13,7 +13,7 @@ npm i @nfid/wallet
 
 ## Signature and types
 
-`requestTranser` is an asynchronous method which opens the NFID window and asks the user to consent a token transfer.
+`requestTranser` is an asynchronous method which opens the NFID window and asks the user to approve a token transfer.
 
 ```typescript
 requestTransfer(params: RequestTransferParams, options?: NFIDProviderConf): Promise<RequestTransferResult>
