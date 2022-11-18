@@ -74,3 +74,56 @@ export declare type RequestTransferResult =
       message: string;
     };
 ```
+
+## Verifying the new balance
+
+To verify the transaction you can use Internet Computer [rosetta-api](https://internetcomputer.org/docs/current/developer-docs/integrations/rosetta/):
+
+```typescript
+fetch("https://rosetta-api.internetcomputer.org/account/balance", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    network_identifier: {
+      blockchain: "Internet Computer",
+      network: "00000000000000020101",
+    },
+    account_identifier: {
+      address: address,
+    },
+  }),
+}).then((response: RosettaBalance) => {
+  // verify => response.balances[0].value
+});
+```
+
+**Return Types:**
+
+```typescript
+export interface RosettaBalance {
+  block_identifier: {
+    index: number;
+    hash: string;
+  };
+  balances: [Balance];
+  metadata: {
+    sequence_number: number;
+  };
+}
+
+export interface Balance {
+  value: string;
+  currency: {
+    symbol: string;
+    decimals: number;
+    metadata: {
+      Issuer: string;
+    };
+  };
+  metadata: object;
+}
+```
+
+Find details about the rosetta [AccountBalanceResponse at the rosetta docs](https://www.rosetta-api.org/docs/models/AccountBalanceResponse.html)
