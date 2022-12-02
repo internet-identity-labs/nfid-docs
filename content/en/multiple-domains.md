@@ -1,7 +1,7 @@
 ---
 title: Multiple domains
 position: 21
-category: Get Started
+category: Developers
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 

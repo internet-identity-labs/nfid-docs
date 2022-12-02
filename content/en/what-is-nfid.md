@@ -1,7 +1,7 @@
 ---
 title: What is NFID?
 subtitle: You are unique, just like your NFID.
-position: 1
+position: 100
 description: "The complete guide to NFID: the identity layer for the internet."
 category: Overview
 features:

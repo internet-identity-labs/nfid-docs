@@ -1,7 +1,7 @@
 ---
 title: NFID Concepts 101
 subtitle: Learn more about NFID from the key concepts below.
-position: 2
+position: 101
 category: Overview
 description: "The complete guide to NFID: the identity layer for the internet."
 ---

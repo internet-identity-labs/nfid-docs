@@ -1,7 +1,7 @@
 ---
 title: Basic installation
 position: 20
-category: Get Started
+category: Developers
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
