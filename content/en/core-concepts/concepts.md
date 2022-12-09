@@ -35,6 +35,6 @@ A Web3 wallet recovery flow allows users to recover their NFID using a previousl
 A [device-based recovery flow](../tips-and-tricks/recover-your-account#recover-with-nfid-number-and-biometric-unlock-or-security-key) allows the user to recover their NFID from any of their previously-registered FIDO-based devices, including security keys.
 
 ## Registered Devices
-A user can have multiple devices that are bound to their account. This list includes any device that they used to authenticate, which is not necessarily the device they used to access their account. For example, a user can log into your website from their desktop device after using their mobile device to authenticate. Learn more about this flow [here](../create/device-registration#starting-on-a-desktop-computer).
+A user can have multiple devices that are bound to their account. This list includes any device that they used to authenticate, which is not necessarily the device they used to access their account. For example, a user can log into your website from their desktop device after using their mobile device to authenticate. Learn more about this flow [here](../create/passkey-registration#starting-on-a-desktop-computer).
 
 For web applications, each browser represents a different device, and is registered separately. In addition, devices may vary in their support for FIDO2 biometrics (based on device model, device OS, browser, etc.). Therefore, the authentication experience may vary across devices.

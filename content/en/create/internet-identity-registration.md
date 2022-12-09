@@ -57,7 +57,7 @@ In either of the above two cases, you'll have the option to create a passkey for
 
 Apple [writes about passkeys](https://support.apple.com/en-us/HT213305) that they're "a replacement for passwords that are designed to provide websites and apps a passwordless sign-in experience that is both more convenient and more secure".
 
-**We encourage you use NFID with passkeys, since they offer incredibly strong security and convenience for you.**
+**We encourage NFID be used with passkeys, since they offer incredibly strong security and convenience for you.**
 
 The biometric prompts that appear will be different depending on the device you're on (desktop, tablet, or mobile) and the browser you're using (Chrome, Safari, Firefox, Edge, or Brave).
 

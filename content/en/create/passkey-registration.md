@@ -1,5 +1,5 @@
 ---
-title: Device biometrics
+title: Passkeys
 position: 15
 category: Create your NFID
 description: "The complete guide to NFID: the easy to implement, decentralized one-touch MFA and authorization platform."
@@ -7,11 +7,13 @@ description: "The complete guide to NFID: the easy to implement, decentralized o
 
 <img src="../register-devices.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
-If you want to create an NFID without any reliance on Google (and you don't have or want to install a traditional wallet), you can do so exclusively with your device biometrics.
+Passwords are typically the first line of defense in our digital lives but are at risk of being phished or leaked in data breaches.
+
+To address these security threats in a simpler and more convenient way, Internet users need to move towards passwordless authentication. This is where passkeys come in. Passkeys are a significantly safer replacement for passwords and other phishable authentication factors. They cannot be reused, don't leak in server breaches, and protect users from phishing attacks. Passkeys are built on industry standards, can work across different operating systems and browser ecosystems, and can be used with both websites and apps.
 
 Apple [writes about passkeys](https://support.apple.com/en-us/HT213305) that they're "a replacement for passwords that are designed to provide websites and apps a passwordless sign-in experience that is both more convenient and more secure".
 
-**We encourage you use NFID with passkeys since they offer incredibly strong security and convenience for you, and we encourage you register multiple devices in case one is lost.**
+**We encourage NFID be used with passkeys since they offer incredibly strong security and convenience for you, and we encourage you register them on multiple devices in case one is lost.**
 
 ## Starting on a desktop computer
 

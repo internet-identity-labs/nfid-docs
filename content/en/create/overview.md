@@ -10,4 +10,4 @@ There are many ways to create an NFID:
 - With [Google](google-registration)
 - With [MetaMask](metamask-registration)
 - With [Internet Identity](internet-identity-registration)
-- With [Device biometrics](device-registration)
+- With [Passkeys](passkey-registration)
