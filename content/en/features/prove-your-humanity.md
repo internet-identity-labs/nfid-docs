@@ -7,7 +7,7 @@ description: "The complete guide to NFID: the identity layer for the internet."
 
 Ever wonder why every application individually asks you to submit your phone number and verify it with a code they send? It's because you don't have a wallet you could store a verified phone number credential in! Well, now you do.
 
-## Share your verified phone number credential with an application
+## Prove your humanity to an application
 
 Applications will want to know you have a verified phone number for a variety of reasons, but primarily they want to know you're a human being who hasn't yet created an account with them before. Since you likely only have one mobile number you pay for, sharing proof of this credential ends up being a low-effort way for applications to reasonably make that assumption.
 
