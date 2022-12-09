@@ -1,5 +1,5 @@
 ---
-title: Verify your mobile
+title: Prove your humanity
 position: 54
 category: Features
 description: "The complete guide to NFID: the identity layer for the internet."

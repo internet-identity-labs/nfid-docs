@@ -9,4 +9,4 @@ NFID makes Web3 easy:
 - [Sign in your way](/features/sign-in-your-way)
 - [Send & receive crypto](/features/send-and-receive-crypto)
 - [Buy NFTs](/features/buy-nfts)
-- [Verify your mobile](/features/verify-your-mobile)
+- [Prove your humanity](/features/prove-your-humanity)
