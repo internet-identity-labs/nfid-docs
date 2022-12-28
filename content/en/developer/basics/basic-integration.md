@@ -40,7 +40,7 @@ windowOpenerFeatures:
   `toolbar=0,location=0,menubar=0,width=525,height=705`
 ```
 
-<img src="account_selection_screen.png" style="width:200px;margin:auto;"></img>
+<img src="../../account_selection_screen.png" style="width:200px;margin:auto;"></img>
 
 ## Generating the same user identifiers across your domains
 NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions for [multiple domains](multiple-domains.md).
