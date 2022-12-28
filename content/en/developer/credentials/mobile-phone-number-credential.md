@@ -50,7 +50,7 @@ const result = await requestPhoneNumberCredential(identity);
 
 Since it is possible for a bad actor to attempt to manipulate a credential, we've provided an additional trustable method for verifying the user's credential. This is provided by the `is_phone_number_approved` method on our blackholed "verifier" canister, which is tamper proof and keeps hashed records of all phone number credentials. With this verification step, the complete flow would look like this:
 
-<img src="phone-credential-sequence-diagram.png"></img>
+<img src="../../phone-credential-sequence-diagram.png"></img>
 
 The full interface for this method is </br>
 `is_phone_number_approved(principal: string) : bool`</br>
