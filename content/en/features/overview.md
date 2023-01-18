@@ -1,7 +1,7 @@
 ---
 title: Overview
 position: 50
-category: Features
+category: NFID Wallet
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
