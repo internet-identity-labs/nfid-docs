@@ -1,11 +1,16 @@
 ---
-title: SDK Iframe
+title: NFID Embed
+subtitle: 10x your user and transaction volume by eliminating onboarding friction
 position: 25
 category: Developer guides
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-Some intro text
+<img src="../../nfid-embed-connect-screen.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
+
+NFID Embed is NFID Wallet embedded on your page as an iframe. With just a few lines of code, you can eliminate all user onboarding friction to maximize your application's growth and transaction volume.
+
+If you'd like to add NFID Embed in your application, please email gm@identitylabs.ooo
 
 ## Client Example
 
@@ -15,32 +20,40 @@ Some intro text
 npm i @nfid/iframe-auth
 ```
 
-### 2\. Prepare container for iframe
+### 2\. Set iframe properties
 
-**`const container = document.querySelector('.form-container') as HTMLElement;`**
+A container element of type `HTMLElement` and the NFID provider URL of type `string` are the only required options, but we suggest adding the handlers and customizing your colors.
 
-You can get the HTMLElement by any other way, like React.useRef,
-
-### 3\. Call the IFrameAuthClient
-
-Here is the types of IFrameAuthClient method
+The full interface looks like this:
 
 ```typescript
-/**
- * Render authentication iframe, based on @dfinity/auth-client
- * @param iframeElement HTMLElement where iframe should be rendered
- * @param provider url string
- * @param onSuccess success callback
- * @param onError error callback
- * @param iframeStyleQueries PREMIUM FEATURE | Custom iframe styling
- * @return void
- */
-const IFrameAuthClient;
+export interface IIFrameAuthClient {
+  iframeElement: HTMLElement;
+  provider: string;
+  onSuccess?: (identity: Identity) => void;
+  onError?: (error?: string) => void;
+  iframeStyleQueries?: string;
+}
 ```
 
-**Integration**
-At the end the code should look smth like this:
+The `iframeStyleQueries` are a concatenation of string or hex colors as URL parameters. The full list of customization options are:
+```typescript
+export interface ScreenStyleParams {
+  frameBgColor?: string | null
+  frameBorderColor?: string | null
+  primaryButtonColor?: string | null
+  secondaryButtonColor?: string | null
+  buttonBorderColor?: string | null
+  mainTextColor?: string | null
+  secondaryTextColor?: string | null
+  linkColor?: string | null
+}
 
+// Encode them all as a URI component:
+const colorCustomization = encodeURIComponent('frameBgColor=red&frameBorderColor=#000000&primaryButtonColor=blue&etc');
+```
+
+The full configuration for NFID Embed looks like this:
 ```typescript
 const container = document.querySelector(".form-container") as HTMLElement;
 const host = "https://nfid.one";
@@ -51,7 +64,19 @@ const handleSuccess = (i: Identity) => {
     .toString()}</h3>`;
 };
 
-IFrameAuthClient(container, host, handleSuccess);
+const handleError = (e: string) => {
+  container.innerHTML = `<h3>Something went wrong: <br/> ${e}</h3>`;
+};
+
+const colorCustomization = encodeURIComponent('frameBgColor=red&frameBorderColor=#000000&primaryButtonColor=blue');
 ```
 
-As the result you should get iframe inside your container and you can handle authentication by passing success callback
+Visit our [demo page](https://wzkxy-vyaaa-aaaaj-qab3q-cai.ic0.app/authentication-iframe) to see how the iframe looks with configurable color combinations.
+
+### 3\. Initialize the IFrameAuthClient
+
+Now just call the `IFrameAuthClient` with your callbacks and configuration:
+
+```typescript
+IFrameAuthClient(container, host, handleSuccess, handleError, iframeStyleQueries);
+```
