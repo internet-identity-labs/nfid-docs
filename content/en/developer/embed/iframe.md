@@ -22,7 +22,7 @@ npm i @nfid/iframe-auth
 
 ### 2\. Set iframe properties
 
-A container element of type `HTMLElement` and the NFID provider URL of type `string` are the only required options, but we suggest adding the handlers and customizing your colors.
+Although a container element of type `HTMLElement` and the NFID provider URL of type `string` are the only *required* options, the handlers are strongly recommended since you're unlikely to have a properly functioning application without them.
 
 The full interface looks like this:
 
