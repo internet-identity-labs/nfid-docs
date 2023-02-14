@@ -1,13 +1,38 @@
 ---
-title: NFID Concepts 101
+title: How NFID works
 subtitle: Learn more about NFID.
 position: 3
 category: Overview
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-## Authentication
-NFID provides a secure, frictionless authentication experience across all end-user devices and use cases—whether they are logging into your website or mobile app, confirming a transaction, performing a step-up authentication, or contacting your Call Center for support.
+This page provides comprehensive coverage of the various aspects involved in using NFID. From the user's and developer's perspectives, this document delves into the architectural aspect of NFID.
+
+## The NFID number - your Web3 identifier
+Seed phrases have become the standard for key management, using 12 or 24 words to represent keys that can be written and stored in various ways. While technically simple, this approach has several issues: onboarding new users can take up to 15 minutes and losses are common due to misplaced or compromised seed phrases.
+
+With NFID, users associate their OAuth tokens, WebAuthn public keys, and other authentication factors to their NFID number, an on-chain identifier that can request threshold ECDSA signatures from an Internet Computer subnet. This architecture allows users to self-custody their ECDSA key like a traditional multi-factor account, without ever storing full cryptographic private keys anywhere, not even on node machines.
+
+> **NOTE:** More info on managing keys
+
+## High level architecture
+The NFID SDK handles the interactions between OAuth token / public key providers, NFID smart contracts, and the Internet Computer threshold signing protocol.
+
+This diagram below describes the relationship between the NFID iframe and integrating application:
+
+<img src="../nfid-authentication-flow.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
+
+> **NOTE:** As you can see, the first critical component to the seamlessness of this UX is that the entire NFID website is served from smart contracts.
+
+<img src="../nfid-authentication-flow.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
+
+> **NOTE:** Secondly, each user can permissionlessly request threshold ECDSA signatures from the Intenet Computer without any person, code, or node having access to the full cryptographic material.
+
+### NFID Embed user flow with your application
+1. User initiates login as if native to your application.
+2. User carries out the authentication process with respect to their auth provider.
+3. User selects the account to connect with your application.
+4. When your application requests a signature, user approves it
 
 With NFID, users authenticate using Google, FIDO-based device biometrics (or native biometrics for mobile apps), or other Web3 wallets. These biometric authenticators, such as fingerprint scanners, are already built into the desktop or mobile device. If their desktop device doesn’t support FIDO2, they can authenticate using a mobile device that does, Google, or another Web3 wallet. Ultimately users have the flexibility to authenticate using their preferred method, though we will continue to encourage progressive security thresholds for higher sensitivity transactions.
 
