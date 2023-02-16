@@ -10,7 +10,7 @@ features:
   - Biometric login on any device, platform, or channel
 ---
 
-NFID is a chain-agnostic smart contract wallet. Onboarding of both mainstream and crypto native users is streamlined to under 30 seconds by providing experiences they're most comfortable with. With support for social logins, web native platforms, and other wallets, NFID results in the easiest way for users to manage their keys and for developers to onboard users.
+NFID is a chain-agnostic, key-abstracted smart contract wallet that lets users self custody with as little as an email address. Onboarding of both mainstream and crypto native users is streamlined to under 30 seconds by providing experiences they're most comfortable with. With support for social logins, web native platforms, and other wallets, NFID results in the easiest way for users to manage their keys and for developers to onboard users.
 
 ## What does NFID do?
 NFID eliminates the friction to onboard users to your applications.

@@ -11,9 +11,9 @@ This page provides comprehensive coverage of the various aspects involved in usi
 ## The NFID number - your Web3 identifier
 Seed phrases have become the standard for key management, using 12 or 24 words to represent keys that can be written and stored in various ways. While technically simple, this approach has several issues: onboarding new users can take up to 15 minutes and losses are common due to misplaced or compromised seed phrases.
 
-With NFID, users associate their OAuth tokens, WebAuthn public keys, and other authentication factors to their NFID number, an on-chain identifier that can request threshold ECDSA signatures from an Internet Computer subnet. This architecture allows users to self-custody their ECDSA key like a traditional multi-factor account, without ever storing full cryptographic private keys anywhere, not even on node machines.
+With NFID, users associate their OAuth tokens, WebAuthn public keys, and other authentication factors to their NFID number, an on-chain identifier that can request threshold ECDSA signatures from the Internet Computer. This architecture allows users to self-custody their ECDSA key like a traditional multi-factor account, without ever storing full cryptographic private keys anywhere, not even on node machines.
 
-> **NOTE:** More info on managing keys
+> **NOTE:** More info on [NFID's key management infrastructure](key-management)
 
 ## High level architecture
 The NFID SDK handles the interactions between OAuth token / public key providers, NFID smart contracts, and the Internet Computer threshold signing protocol.
@@ -28,38 +28,34 @@ This diagram below describes the relationship between the NFID iframe and integr
 
 > **NOTE:** Secondly, each user can permissionlessly request threshold ECDSA signatures from the Intenet Computer without any person, code, or node having access to the full cryptographic material.
 
+Integrating the NFID SDK is a breeze for developers. Simply initialize the SDK, set up the required configuration, and embed the login functionality in your website. From there, you can authenticate users by calling the "connect" function with a simple login button or another user action.
+
 ### NFID Embed user flow with your application
-1. User initiates login as if native to your application.
-2. User carries out the authentication process with respect to their auth provider.
-3. User selects the account to connect with your application.
-4. When your application requests a signature, user approves it
+For the premium experience and to further increase registration / transaction rates with your application, you may add all NFID user flows as iframe components on your site.
 
 With NFID, users authenticate using Google, FIDO-based device biometrics (or native biometrics for mobile apps), or other Web3 wallets. These biometric authenticators, such as fingerprint scanners, are already built into the desktop or mobile device. If their desktop device doesn’t support FIDO2, they can authenticate using a mobile device that does, Google, or another Web3 wallet. Ultimately users have the flexibility to authenticate using their preferred method, though we will continue to encourage progressive security thresholds for higher sensitivity transactions.
 
 The authentication experience itself is branded to the look and feel of NFID with easy customization options for your logo and company name.
 
-## User Registration
-With NFID, you don’t need to manage the registration status of users or devices, or explicitly request registration. All you need to do is request user authentication, and NFID will handle all the logic to determine whether to initiate a registration, authentication, or account recovery flow.
+1. User initiates login on your site.
+2. User authenticates to their NFID and chooses the account they want to connect with.
+3. When your application requests a signature, the NFID Wallet transaction is displayed in the iframe on your site requesting user approval.
 
-When a user authenticates with NFID for the first time, a registration process automatically takes place to register the user. No personally identifiable information is collected, since NFID is explicitly built as a permissionless identity layer for the internet, and instead relies on the cryptographic guarantees of the Internet Computer and Internet Identity service to bind a user's NFID account across all their devices and application/web services.
+<img src="../nfid-embed-flow.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
-When a user authenticates to your application for the first time, you will use the returned delegate caller's principal ID as the user's identifier in your system. This principal ID is different for every account on every website, which prevents applications from tracking a user's global internet activity.
+### NFID Wallet user flow with your application
+1. User initiates login by clicking on a "Connect NFID" button on your site.
+2. User authenticates to their NFID and chooses the account they want to connect with.
+3. When your application requests a signature, the NFID Wallet page opens in a new tab or window requesting user approval.
 
-When a user authenticates to your application after the first time, you will look up the delegate's caller's principal ID to retrieve the corresponding profile.
+<img src="../nfid-wallet-flow.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
-## Account Recovery
-NFID allows users to securely regain access to their account from recovery phrases, other Web3 wallets, or FIDO-based devices. An account recovery flow automatically begins any time an existing NFID user (identified by their NFID number) tries to authenticate using a new device.
+## How NFID ECDSA signatures work
 
-### Recovery phrase
-A [recovery-code-based recovery flow](../tips-and-tricks/recover-your-account#recovery-with-recovery-phrase) allows users to get this authorization from their recovery code—the phrase they must have created beforehand from their NFID profile.
+The NFID protocol leverages a powerful toolkit of advanced cryptographic mechanisms, collectively referred to as chain-key cryptography, built into the Internet Computer Protocol. This approach enables NFID to achieve unparalleled functionality and scalability, setting it apart from other protocols.
 
-### Web3 wallet
-A Web3 wallet recovery flow allows users to recover their NFID using a previously-registered Web3 wallet.
+At the heart of this cutting-edge technology is a threshold signature scheme, similar to a traditional digital signature scheme, but with a distributed secret signing key. This novel approach ensures that the key cannot be compromised by any one replica, or even a significant fraction of the replicas in a subnet.
 
-### Device-based
-A [device-based recovery flow](../tips-and-tricks/recover-your-account#recover-with-nfid-number-and-biometric-unlock-or-security-key) allows the user to recover their NFID from any of their previously-registered FIDO-based devices, including security keys.
+This technology provides NFID with the means to request ECDSA signatures for messages and transactions in such a way that only the user can use and approve.
 
-## Registered Devices
-A user can have multiple devices that are bound to their account. This list includes any device that they used to authenticate, which is not necessarily the device they used to access their account. For example, a user can log into your website from their desktop device after using their mobile device to authenticate. Learn more about this flow [here](../create/passkey-registration#starting-on-a-desktop-computer).
-
-For web applications, each browser represents a different device, and is registered separately. In addition, devices may vary in their support for FIDO2 biometrics (based on device model, device OS, browser, etc.). Therefore, the authentication experience may vary across devices.
+<img src="../nfid-signatures.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
