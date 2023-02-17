@@ -12,6 +12,6 @@ This is where NFID Wallet's infrastructure becomes crucial. NFID allows users to
 
 1. **Grow faster.** Onboard more users than all other wallets combined.
 2. **Expand farther.** New Web3 users are unlikely to own the crypto necessary to interact with your dapp. Embedded fiat flows help you scale with no additional effort.
-3. **Create trust.** Customize to your color scheme let NFID Wallet improve the relationship you have with your users with transaction previews.
+3. **Create trust.** Customize to your color scheme and let NFID Wallet improve the relationship you have with your users with transaction previews.
 
 And most importantly, **give your users the gift of self-custody.** We love Web3 because it inverts the relationship we have with our data. Now it's finally easy for everyone else to do the same.

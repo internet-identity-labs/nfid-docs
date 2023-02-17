@@ -1,8 +1,8 @@
 ---
 title: Secure your account
-position: 71
+position: 80
 category: Tips and tricks
-description: Tips and tricks
+description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
 If you registered and NFID with Google, make sure your Google account is enabled with two-factor authentication.

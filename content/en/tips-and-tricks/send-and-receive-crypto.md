@@ -1,7 +1,7 @@
 ---
 title: Send & receive crypto
-position: 52
-category: NFID Wallet
+position: 72
+category: Tips and tricks
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 

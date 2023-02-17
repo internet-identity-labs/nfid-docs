@@ -15,7 +15,7 @@ With NFID, users handle keys similar to a multi-factor account, where they use t
 3. NFID Identity Manager responds to NFID Frontend wasm smart contract with the index (the NFID number or more simply the NFID, short for non-fungible identifier) that the user now owns, along with a delegation identity that can make authenticated calls back to the network.
 4. The user's delegation identity requests a blockchain address (for the developer-requested network) to the NFID Identity Manager
 5. The blockchain address is returned back to the NFID Frontend and finally delivered to the dapp via RPC endpoint.
-6. When a signature is requested, steps 4-5 are executed with the one difference being the NFID Identity Manager will request the NFID ECDSA Signer for a signature from the Internet Computer Protocol.
+6. When a signature is requested, steps 4-5 are executed with the one difference being the NFID Identity Manager will request the NFID ECDSA Signer for a signature from the Internet Computer Protocol. Read more technical details about the [Internet Computer's revolutionary crytpographic threshold signature innovations here](https://internetcomputer.org/how-it-works/threshold-ecdsa-signing/).
 
 <img src="../ecdsa-abstraction.jpg" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 

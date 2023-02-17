@@ -58,4 +58,6 @@ At the heart of this cutting-edge technology is a threshold signature scheme, si
 
 This technology provides NFID with the means to request ECDSA signatures for messages and transactions in such a way that only the user can use and approve.
 
+Read more technical details about the [Internet Computer's revolutionary crytpographic threshold signature innovations here](https://internetcomputer.org/how-it-works/threshold-ecdsa-signing/).
+
 <img src="../nfid-signatures.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>

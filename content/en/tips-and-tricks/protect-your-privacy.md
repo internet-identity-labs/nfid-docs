@@ -1,8 +1,8 @@
 ---
 title: Protect your privacy
-position: 73
+position: 82
 category: Tips and tricks
-description: Tips and tricks
+description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
 Every time you share an identifier, you allow other people to track your activity. For example if you give 5 applications fake names but the same email address, those 5 applications could collude to aggregate your activity with the common email address identifier.

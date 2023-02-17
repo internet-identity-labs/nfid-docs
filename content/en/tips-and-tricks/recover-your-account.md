@@ -1,8 +1,8 @@
 ---
 title: Recover your account
-position: 72
+position: 81
 category: Tips and tricks
-description: Tips and tricks
+description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
 ## Recover with NFID number and biometric unlock or security key
