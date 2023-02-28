@@ -1,14 +1,27 @@
 ---
 title: Key management
 subtitle: Technical descriptions for NFID's key infrastructure
-position: 5
-category: Overview
+position: 31
+category: How It Works
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
 ## NFID's ECDSA abstraction protocol
 
-With NFID, users handle keys similar to a multi-factor account, where they use their OAuth login, devices and other factors to manage their key pairs. These factors authenticate users to an identifier in one of NFID's wasm smart contracts: The NFID Identity Manager. Here's the step-by-step flow of how a user creates an NFID:
+The NFID protocol leverages a powerful toolkit of advanced cryptographic mechanisms, collectively referred to as chain-key cryptography. This approach enables NFID to achieve unparalleled self-custodial convenience, setting it far apart from other protocols.
+
+At the heart of this cutting-edge technology is a threshold signature scheme, similar to a traditional digital signature scheme, but with a distributed secret signing key. This novel approach ensures that the key cannot be compromised by any one node, or even a significant fraction of the nodes in a subnet.
+
+This technology provides NFID with the means to request ECDSA signatures for messages and transactions in such a way that only the user can use and approve.
+
+- Read details of the [threshold ECDSA-signing protocol](https://eprint.iacr.org/2022/506) and [proofs of its key security elements](https://eprint.iacr.org/2021/1330) by [Victor Shoup](https://en.wikipedia.org/wiki/Victor_Shoup) (author of the [Cramer-Shoup cryptosystem](https://en.wikipedia.org/wiki/Cramer%E2%80%93Shoup_cryptosystem) asymmetric encryption algorithm, editor for [ISO 18033-2: A Standard for Public-Key Encryption](https://www.shoup.net/iso/std6.pdf)) and [Jens Groth](http://www0.cs.ucl.ac.uk/staff/j.groth/) (inventor of [pairing-based NIZK proofs](https://link.springer.com/chapter/10.1007%2F11761679_21), [pairing-based SNARKs](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19), and [logarithmic size proof systems](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19) underpinning Bulletproofs)
+- Watch Victor Shoup's [technical presentation](https://youtu.be/MulbKPwv6_s?t=114) on threshold ECDSA-signing
+
+### Technical user journey
+
+<img src="../nfid-signatures.png" style="width:60%;margin:auto;padding-bottom:20px;"></img>
+
+Users handle keys similar to a multi-factor account, where they use their OAuth login, devices and other factors to manage their key pairs. These factors authenticate users to an identifier in one of NFID's wasm smart contracts: The NFID Identity Manager. Here's the step-by-step flow of how a user creates an NFID:
 > **NOTE:** Remember that the frontend is served from the NFID Frontend wasm smart contract. Therefore we can assume the NFID Frontend is synonymous with `user`.
 1. The NFID Frontend submits a request to the NFID Identity Manager for the next index with the authentication factor in payload.
 2. NFID allocates an index and stores the authentication factor's public key or key-equivalent.
@@ -34,9 +47,7 @@ Read more on ways to [recover your account](../tips-and-tricks/recover-your-acco
 Users with an NFID own a native cryptographic key pair, making NFID compatible with all cryptographic constructs on various platforms and elliptic curves.
 
 ### Censorship resistant
-Using a 2/3 threshold also prevents censorship by the Torus nodes. In the case that the nodes refuse to return the share of the user's private key even after the user has authenticated successfully, the user can still reconstruct their private key using ShareA (device share) and ShareC (recovery share).
+Using a threshold signature also prevents censorship by the nodes because the protocol assumes up to 1/3 of all subnet nodes to be malicious.
 
-## Powered by the Internet Computer Protocol
-NFID is powered by the Internet Computer, an open-source protocol with multiple breakthroughs in cryptography that allow threshold ECDSA signatures such that the ECDSA key never exists on one node - only its shares. Check out more about the tech [here](https://internetcomputer.org/how-it-works).
-
-As of February 2023, the Internet Computer Protocol consists of [865 nodes](https://dashboard.internetcomputer.org/nodes) run by [82 node providers](https://dashboard.internetcomputer.org/providers) across [69 geographically distributed data centers](https://dashboard.internetcomputer.org/centers), and the threshold cryptography native to the protocol ensure none can access any data or keys.
+## The node network
+As of February 2023, the base protocol consists of [865 nodes](https://dashboard.internetcomputer.org/nodes) run by [82 node providers](https://dashboard.internetcomputer.org/providers) across [69 geographically distributed data centers](https://dashboard.internetcomputer.org/centers), and the threshold cryptography native to the protocol ensure none can access any data or keys.

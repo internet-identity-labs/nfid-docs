@@ -1,26 +1,42 @@
 ---
-title: NFID Embed
-subtitle: 10x your user and transaction volume by eliminating onboarding friction
-position: 25
-category: Developer guides
+title: UI Customization
+position: 27
+category: Features
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
+When the NFID Wallet is shown for [authentication](authentication), [data collection](data-collection), [sybil resistance](sybil-resistance), [transaction signing](transaction-signing), or [personal signatures](personal-signatures), you have the ability to configure some UI options to reflect your brand. The level of customization depends on the pricing tier you have selected.
+
+## Pricing
+### Included with all plans
+Add your app name and logo
+<img src="../../authenticate.png" style="width:90%;margin:auto;"></img>
+
+### With NFID Wallet+
+Inject the iframe anywhere on your site.
 <img src="../../nfid-embed-connect-screen.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
-NFID Embed is NFID Wallet embedded on your page as an iframe. With just a few lines of code, you can eliminate all user onboarding friction to maximize your application's growth and transaction volume.
+And change the brand colors.
+<img src="../../authenticate-custom.png" style="width:90%;margin:auto;"></img>
 
-If you'd like to add NFID Embed in your application, please email gm@identitylabs.ooo
+## Usage
+### The NFIDWallet object
+[NFIDWallet](../getting-started/quickstart#create) instantiates an instance of the NFID Wallet and sets configuration properties that appear in the user's UI for:
+- Your application name
+- Your application logo
+- The chain for which you're requesting connections and signatures
+NFID currently supports EVM and ICP chains.
 
-## Client Example
+### NFID Wallet+
+Contact gm@identitylabs.ooo for pricing.
 
-### 1\. Install the iframe-auth package
+#### 1\. Install the iframe-auth package
 
 ```sh
 npm i @nfid/iframe-auth
 ```
 
-### 2\. Set iframe properties
+#### 2\. Set iframe properties
 
 Although a container element of type `HTMLElement` and the NFID provider URL of type `string` are the only *required* options, the handlers are strongly recommended since you're unlikely to have a properly functioning application without them.
 
@@ -73,7 +89,7 @@ const colorCustomization = encodeURIComponent('frameBgColor=red&frameBorderColor
 
 Visit our [demo page](https://wzkxy-vyaaa-aaaaj-qab3q-cai.ic0.app/authentication-iframe) to see how the iframe looks with configurable color combinations.
 
-### 3\. Initialize the IFrameAuthClient
+#### 3\. Initialize the IFrameAuthClient
 
 Now just call the `IFrameAuthClient` with your callbacks and configuration:
 

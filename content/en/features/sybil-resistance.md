@@ -1,20 +1,17 @@
 ---
-title: Sybil resistance
-position: 23
-category: Developer guides
+title: Sybil Resistance
+position: 22
+category: Features
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-As an application developer, you may need to identify unique humans for airdrops, token allocations, governance, etc. NFID supports a proof that the authenticated identity has or has not yet created an account with your application using the mobile phone number associated with their NFID.
+Assuming the user approves your request, NFID Wallet+ provides proof they're unique to your app:
+- Each NFID Wallet can only have associated one non-removable mobile phone number
+- Each phone number goes through two layers of carrier status verification that checks against VoIP, scam, and risky numbers
+- Phone numbers are unique to the NFID network, guaranteeing no two NFID Wallets can ever have the same verified number
+- If an NFID Wallet has already proven their credential to your application from any blockchain address, any subsequent attempts to verify the same phone number from other identifiers will result in the `"REJECTED"` status
 
-## How the phone credential provides sybil-resitance
-
-- Each NFID can only have one non-removable mobile phone number
-- Each phone number goes through two layers of carrier status verification that checks against VOIP, scam, and risky numbers
-- Phone numbers are unique in NFID, guaranteeing no two NFIDs can ever have the same verified number
-- If an NFID has already proven their credential to your application from one identifier, any subsequent attempts to verify the same phone number from other identifiers will result in the `"REJECTED"` status
-
-## Client Example
+## Usage
 
 ### 1\. Install the credentials package
 
@@ -22,7 +19,7 @@ As an application developer, you may need to identify unique humans for airdrops
 npm i @nfid/credentials
 ```
 
-### 2\. Request the credential of an [authenticated NFID delegationIdentity](../basics/basic-integration)
+### 2\. Request the credential of an [authenticated NFID delegationIdentity](../ic-features/authentication)
 
 **`requestPhoneNumberCredential(identity: DelegationIdentity)`**
 
@@ -74,3 +71,15 @@ const verificationResult = verifyPhoneNumberCredential(
 
 - `verificationResult`
   - `boolean: "TRUE" | "FALSE"` indicates the result of the verification request. `TRUE` indicates the credential was not tampered with. `FALSE` indicates that the credential may have been tampered with or that the credential expired and you should try again.
+
+
+## Configuration
+### The NFIDWallet object
+[NFIDWallet](../getting-started/quickstart#create) instantiates an instance of the NFID Wallet and sets configuration properties that appear in the user's UI for:
+- Your application name
+- Your application logo
+- The chain for which you're requesting connections and signatures
+NFID currently supports EVM and ICP chains.
+
+### NFID Wallet+
+Learn how to inject this experience on your site and brand it with your own logo and colors in the [customization section](ui-customization).

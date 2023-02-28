@@ -1,9 +1,11 @@
 ---
-title: Balances & transfers
-position: 24
-category: Developer guides
+title: Interoperability
+position: 43
+category: Delegation keys
 description: Learn how to request token transfer with NFID wallet sdk
 ---
+
+In order to request balances and transfers across delegation identities, you'll need to use the NFID Wallet package.
 
 ## Installation
 
