@@ -14,7 +14,7 @@ At the heart of this cutting-edge technology is a threshold signature scheme, si
 
 This technology provides NFID with the means to request ECDSA signatures for messages and transactions in such a way that only the user can use and approve.
 
-- Read details of the [threshold ECDSA-signing protocol](https://eprint.iacr.org/2022/506) and [proofs of its key security elements](https://eprint.iacr.org/2021/1330) by [Victor Shoup](https://en.wikipedia.org/wiki/Victor_Shoup) (author of the [Cramer-Shoup cryptosystem](https://en.wikipedia.org/wiki/Cramer%E2%80%93Shoup_cryptosystem) asymmetric encryption algorithm, editor for [ISO 18033-2: A Standard for Public-Key Encryption](https://www.shoup.net/iso/std6.pdf)) and [Jens Groth](http://www0.cs.ucl.ac.uk/staff/j.groth/) (inventor of [pairing-based NIZK proofs](https://link.springer.com/chapter/10.1007%2F11761679_21), [pairing-based SNARKs](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19), and [logarithmic size proof systems](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19) underpinning Bulletproofs)
+- Read the [threshold ECDSA-signing whitepaper](https://eprint.iacr.org/2022/506) and [proofs of its key security elements](https://eprint.iacr.org/2021/1330) by [Victor Shoup](https://en.wikipedia.org/wiki/Victor_Shoup) (author of the [Cramer-Shoup cryptosystem](https://en.wikipedia.org/wiki/Cramer%E2%80%93Shoup_cryptosystem) asymmetric encryption algorithm, editor for [ISO 18033-2: A Standard for Public-Key Encryption](https://www.shoup.net/iso/std6.pdf)) and [Jens Groth](http://www0.cs.ucl.ac.uk/staff/j.groth/) (inventor of [pairing-based NIZK proofs](https://link.springer.com/chapter/10.1007%2F11761679_21), [pairing-based SNARKs](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19), and [logarithmic size proof systems](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19) underpinning Bulletproofs)
 - Watch Victor Shoup's [technical presentation](https://youtu.be/MulbKPwv6_s?t=114) on threshold ECDSA-signing
 
 ### Technical user journey
@@ -28,7 +28,7 @@ Users handle keys similar to a multi-factor account, where they use their OAuth 
 3. NFID Identity Manager responds to NFID Frontend wasm smart contract with the index (the NFID number or more simply the NFID, short for non-fungible identifier) that the user now owns, along with a delegation identity that can make authenticated calls back to the network.
 4. The user's delegation identity requests a blockchain address (for the developer-requested network) to the NFID Identity Manager
 5. The blockchain address is returned back to the NFID Frontend and finally delivered to the dapp via RPC endpoint.
-6. When a signature is requested, steps 4-5 are executed with the one difference being the NFID Identity Manager will request the NFID ECDSA Signer for a signature from the Internet Computer Protocol. Read more technical details about the [Internet Computer's revolutionary crytpographic threshold signature innovations here](https://internetcomputer.org/how-it-works/threshold-ecdsa-signing/).
+6. When a signature is requested, steps 4-5 are executed with the one difference being the NFID Identity Manager will request the NFID ECDSA Signer for a signature from the base protocol.
 
 <img src="../ecdsa-abstraction.jpg" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
