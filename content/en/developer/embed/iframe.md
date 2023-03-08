@@ -71,7 +71,7 @@ const handleError = (e: string) => {
 const colorCustomization = encodeURIComponent('frameBgColor=red&frameBorderColor=#000000&primaryButtonColor=blue');
 ```
 
-Visit our [demo page](https://wzkxy-vyaaa-aaaaj-qab3q-cai.ic0.app/authentication-iframe) to see how the iframe looks with configurable color combinations.
+Visit our [demo page](https://hvn26-aiaaa-aaaak-aaa2a-cai.ic0.app/authentication-iframe) to see how the iframe looks with configurable color combinations.
 
 ### 3\. Initialize the IFrameAuthClient
 
