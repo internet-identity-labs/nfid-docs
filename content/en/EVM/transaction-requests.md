@@ -1,13 +1,11 @@
 ---
-title: Transaction Signing
-position: 23
-category: Features
+title: Transaction requests
+position: 13
+category: EVM
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-NFID provides a seamless UI experience by default, triggered whenever the `sendTransaction` RPC method is executed using the NFID SDK or web3 provider libraries such as web3.js or ethers.js. This interface is designed to provide the user with pertinent information related to the transaction, such as the transaction details and associated costs, including estimated gas fees.</br>
-
-[Custom transaction previews]() to increase trust with your users are available as part of NFID Wallet+.
+Example requesting a transaction be signed:
 
 <img src="../../buy.png" style="width:500px;margin:auto;"></img>
 
@@ -43,14 +41,3 @@ requestTransactionApproval().then((signedTransaction) => {
   console.error('Failed to request transaction approval:', error);
 });
 ```
-
-## Configuration
-### The NFIDWallet object
-[NFIDWallet](../getting-started/quickstart#create) instantiates an instance of the NFID Wallet and sets configuration properties that appear in the user's UI for:
-- Your application name
-- Your application logo
-- The chain for which you're requesting connections and signatures
-NFID currently supports EVM and ICP chains.
-
-### NFID Wallet+
-Learn how to inject this experience on your site and brand it with your own logo and colors in the [customization section](ui-customization).

@@ -1,15 +1,18 @@
 ---
-title: Quick start
+title: EVM Quickstart
 position: 10
-category: Getting started
+category: EVM
 description: Developer tools
 ---
 
-NFID uses RPC endpoints for all chains except ICP (in the process of migration). Use the [ICP guide](../ic-features/authentication) if you're an ICP developer.
+This section is for Ethereum developers.
+
+NFID Wallet is served in an iframe on your site and triggered whenever the `signTransaction`, `signTypedData`, or `personalSign` RPC methods are executed using the NFID SDK or web3 provider libraries like web3.js or ethers.js.
+
+Below is a sample implementation for adding the iframe to your site:
 
 ## Install
-
-**NPM:**
+Install the NFID SDK - all you need to embed the NFID Wallet as an iframe on your page.
 ```bash
 npm install --save nfid-sdk
 ```
@@ -56,9 +59,3 @@ connectToNFIDWallet().then((account) => {
   console.error('Failed to connect to NFID Wallet:', error);
 });
 ```
-
-## Next steps
-- Dive into a React [demo application](https://hvn26-aiaaa-aaaak-aaa2a-cai.ic0.app/authentication) and try out NFID Wallet's functionality
-- Learn how to request [wallet signatures](), [proof of uniqueness](), and other [personal data]()
-- Check out our [SDK reference]()
-- Acquire more users with [NFID Wallet+]()

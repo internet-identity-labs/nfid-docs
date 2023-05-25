@@ -1,11 +1,22 @@
 ---
-title: Authentication
-position: 40
-category: Delegation keys
+title: ICP quickstart
+position: 31
+category: ICP
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-NFID can return delegation identities to your application for signing transaction messages without wallet prompts. Each delegation identity is scoped to a `user account <> domain` pair, meaning the user's identifier will be different if they're signing in to `example.com` and `example-2.com`, or on `example.com` with account `1` or `2`, but NFID can still provide interactivity between them all. If you own multiple domains and want to ensure the same identifiers are generated across them, follow these instructions for [generating the same identifier across multiple domains](#generating-the-same-user-identifier-across-multiple-domains).
+NFID returns delegation identity to your application, which is able to sign all messages without wallet prompts.
+
+If you own multiple domains and want to ensure the same identifiers are generated across them, follow these instructions for [generating the same identifier across your multiple domains](#generating-the-same-user-identifier-across-multiple-domains).
+
+## Prerequisites
+When submitting the request for a delegation identity, you need to provide the canister IDs that this delegation will have permission to call. To protect user assets in other canisters that aren't yours, we require you add a `get_whitelisted_frontends` method to each of the canisters you wish to add to the delegation. NFID will ensure the `event.origin` (the origin that's requesting a delegation) is in the returned array from this method for each canister in the `targets` array.
+
+```
+# Rust implementation
+
+# Motoko implementation
+```
 
 ## Usage
 This guide assumes familiarity with building on the IC. More information can be found [here](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove). Your environment will need:
@@ -33,7 +44,7 @@ If you already have Internet Identity authentication set up, simply change the e
 ``` 
 
 ### Generating the same user identifier across multiple domains
-NFID is an anonymizing identity protocol that generates new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
+If you want to ensure the same identifiers are generated across your different domains, follow these instructions.
 
 <ol>
   <li>
@@ -136,20 +147,3 @@ windowOpenerFeatures:
   `top=${window.screen.height / 2 - 705 / 2},` + 
   `toolbar=0,location=0,menubar=0,width=525,height=705`
 ```
-
-<img src="../../account_selection_screen.png" style="width:200px;margin:auto;"></img>
-
-### Limiting the number of delegation identities each NFID can create
-By default, NFID allows users to create up to 5 unique delegation identities with your application.
-
-If you'd like to change that number, reach out to gm@identitylabs.ooo with the following:
-</br></br>*Subject:* 
->Request to restrict number of NFID accounts with my application 
-*Body:* 
->My application's derivation origin is: {derivationOrigin}</br>The amount of accounts I'd like to limit each NFID to is: {accountLimit}
-
-`derivationOrigin` is the originating domain that the principal ID is derived from.
-`accountLimit` is a number between 1 and 5 inclusive. Your users will see two different screens depending on if you limit the number of accounts each NFID can create to 1 or more than 1.
-
-### NFID Wallet+
-Learn how to inject this experience on your site and brand it with your own logo and colors in the [customization section](ui-customization).

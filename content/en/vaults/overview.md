@@ -7,7 +7,7 @@ description: "The complete guide to NFID: the identity layer for the internet."
 
 <img src="../vaults.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
-NFID Vaults are a product for multiple people to manage shared digital assets with:
+NFID Vaults are the most powerful multi-chain multi-approver platform for managing shared digital assets with:
 - Enterprise-grade security to protect assets from cyber attacks, internal collusion, and human error
 - Intuitive experience that NFID Vault owners can onboard themselves to and interact with
 - The ability to scale without being constrained by out-of-the-box features and functionality
