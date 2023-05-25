@@ -50,4 +50,4 @@ Users with an NFID own native cryptographic key pairs, making NFID compatible wi
 Using a threshold signature also prevents censorship by the nodes because the protocol assumes up to 1/3 of all subnet nodes to be malicious.
 
 ## The node network
-As of February 2023, the base protocol consists of [865 nodes](https://dashboard.internetcomputer.org/nodes) run by [82 node providers](https://dashboard.internetcomputer.org/providers) across [69 geographically distributed data centers](https://dashboard.internetcomputer.org/centers), and the threshold cryptography native to the protocol ensure none can access any data or keys.
+As of May 2023, the base protocol consists of [549 (live) nodes](https://dashboard.internetcomputer.org/nodes) run by [75 (live) node providers](https://dashboard.internetcomputer.org/providers) across [44 (live) geographically distributed data centers](https://dashboard.internetcomputer.org/centers), and the threshold cryptography native to the protocol ensure none can access any data or keys.
