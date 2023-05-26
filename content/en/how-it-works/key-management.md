@@ -39,9 +39,9 @@ The user is always in control of ownership and access to their cryptographic key
 NFID provides users with seamless access to their key pair through login flows that are as effortless and familiar as those used in Web2 applications. This not only simplifies the user experience and onboarding, but also enhances the overall accessibility and convenience of Web3.
 
 ### No need for key recovery
-NFID allows users to set up their own MFA policies in the NFID Identity Manager smart contract, which is the abstraction for their ECDSA key. As a result, users will never "lose their key" or need to recover it because they have so many options to authenticate themselves to their NFID.
+NFID allows users to set up their own MFA policies in the NFID Identity Manager smart contract, which is the abstraction for their ECDSA keys. As a result, users will never "lose their key" unless they lose access to their email address or lost all passkeys they've added.
 
-Read about how to [enable 2FA](https://learn.nfid.one/enable-2fa-for-enterprise-grade-security).
+Read about how users [enable 2FA](https://learn.nfid.one/enable-2fa-for-enterprise-grade-security).
 
 ### Chain/platform agnostic via native signatures
 Users with an NFID own native cryptographic key pairs, making NFID compatible with all cryptographic constructs on various platforms and elliptic curves.
@@ -50,4 +50,4 @@ Users with an NFID own native cryptographic key pairs, making NFID compatible wi
 Using a threshold signature also prevents censorship by the nodes because the protocol assumes up to 1/3 of all subnet nodes to be malicious.
 
 ## The node network
-As of May 2023, the base protocol consists of [549 (live) nodes](https://dashboard.internetcomputer.org/nodes) run by [75 (live) node providers](https://dashboard.internetcomputer.org/providers) across [44 (live) geographically distributed data centers](https://dashboard.internetcomputer.org/centers), and the threshold cryptography native to the protocol ensure none can access any data or keys.
+As of May 2023, the base protocol consists of [549 (live) nodes](https://dashboard.internetcomputer.org/nodes) run by [75 (live) node providers](https://dashboard.internetcomputer.org/providers) across [44 (live) geographically distributed data centers](https://dashboard.internetcomputer.org/centers).
