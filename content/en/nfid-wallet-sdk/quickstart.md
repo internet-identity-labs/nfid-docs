@@ -1,7 +1,7 @@
 ---
 title: Quickstart
 position: 10
-category: Wallet SDK
+category: NFID Wallet SDK
 description: Developer tools
 ---
 
