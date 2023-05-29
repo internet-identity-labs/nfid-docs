@@ -16,4 +16,9 @@ NFID Wallet is an account abstracted wallet users can create with an email addre
 ## What is NFID Wallet Kit?
 NFID Wallet Kit returns a `provider` instance for the requested chain by letting the user authenticate using their email address or webauthn credential.</br></br>
 
+## Currently supported chains
+- Ethereum
+- Polygon
+- Internet Computer
+
 > **_Follow our latest updates <a href="https://twitter.com/@IdentityMaxis" target="_blank" style="color: #0E62FF;">@IdentityMaxis</a>._**
