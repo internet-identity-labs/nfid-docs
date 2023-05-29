@@ -12,7 +12,7 @@ The NFID protocol leverages a powerful toolkit of advanced cryptographic mechani
 
 At the heart of this cutting-edge technology is a threshold signature scheme, similar to a traditional digital signature scheme, but with a distributed secret signing key. This novel approach ensures that the key cannot be compromised by any one node, or even a significant fraction of the nodes in a subnet.
 
-This technology provides the NFID smart contracts with the means to request ECDSA signatures for messages and transactions in such a way that only the user can use and approve. You can read more about the core of how this will work by learning about the core threshold signature scheme:
+This technology provides the NFID smart contracts with the means to request ECDSA signatures for messages and transactions in such a way that only the user can use and approve. You can learn how the core of this works by reading more about the Internet Computer's signature schemes:
 
 - Read the [threshold ECDSA-signing whitepaper](https://eprint.iacr.org/2022/506) and [proofs of its key security elements](https://eprint.iacr.org/2021/1330) by [Victor Shoup](https://en.wikipedia.org/wiki/Victor_Shoup) (author of the [Cramer-Shoup cryptosystem](https://en.wikipedia.org/wiki/Cramer%E2%80%93Shoup_cryptosystem) asymmetric encryption algorithm, editor for [ISO 18033-2: A Standard for Public-Key Encryption](https://www.shoup.net/iso/std6.pdf)) and [Jens Groth](http://www0.cs.ucl.ac.uk/staff/j.groth/) (inventor of [pairing-based NIZK proofs](https://link.springer.com/chapter/10.1007%2F11761679_21), [pairing-based SNARKs](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19), and [logarithmic size proof systems](https://link.springer.com/chapter/10.1007%2F978-3-642-17373-8_19) underpinning Bulletproofs)
 - Watch Victor Shoup's [technical presentation](https://youtu.be/MulbKPwv6_s?t=114) on threshold ECDSA-signing
@@ -24,9 +24,9 @@ This technology provides the NFID smart contracts with the means to request ECDS
 
 Users handle keys similar to a multi-factor account, where they use their OAuth login, devices and other factors to manage their key pairs. These factors authenticate users to an identifier in one of NFID's wasm smart contracts: The NFID Identity Manager. Here's the step-by-step flow of how a user creates an NFID:
 1. The NFID Frontend submits a request to the NFID Identity Manager for the next index with the authentication factor in payload.
-2. NFID allocates an index and stores the authentication factor's public key or key-equivalent.
+2. NFID allocates an index and stores the authentication factor's public key or key-equivalent (i.e. email verification, oauth token).
 3. NFID Identity Manager responds to NFID Frontend with the index (the NFID number or more simply the NFID, short for non-fungible identifier) that the user now owns, along with a delegation identity that can make authenticated calls back to the network.
-4. The user's delegation identity requests a blockchain address (for the developer-requested network) to the NFID Identity Manager
+4. The user's delegation identity requests a blockchain address (for the developer-requested network) from the NFID Identity Manager
 5. The blockchain address is returned back to the NFID Frontend and finally delivered to the dapp via RPC endpoint.
 6. When a signature is requested, steps 4-5 are executed with the one difference being the NFID Identity Manager will request the NFID ECDSA Signer for a signature.
 
