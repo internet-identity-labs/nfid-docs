@@ -86,3 +86,29 @@ const receipt = await web3.eth.sendTransaction({
   value: amount,
 });
 ```
+
+## Internet Computer
+
+NFID gives you access to the Internet Computer. You're interacting with the Internet Computer by using our `IC Blockchain Provider`.
+
+### Requesting the account your users want to connect to your app
+
+```typescript
+const identity = await nfidWallet.ic.getDelegation();
+const address = identity.getPrincipal().toText();
+```
+
+### Sending transactions
+
+```typescript
+import { E8S } from "@nfid/wallet";
+
+const destination = "rrkah-fqaaa-aaaaa-aaaaq-cai";
+const amount = BigInt(1 * E8S); // 1 ICP
+
+nfidWallet.ic.sendTransaction({
+  from: address,
+  to: destination,
+  value: amount,
+});
+```
