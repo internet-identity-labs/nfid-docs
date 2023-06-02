@@ -25,7 +25,7 @@ This guide assumes familiarity with building on the IC. More information can be 
 Create an instance of the NFIDWalletSDK by providing the SDK configuration NFIDWalletConfig.
 
 ```javascript
-import { NFIDWalletSDK, NFIDAuthOptions } from '@nfid/wallet-sdk';
+import { NFIDWalletSDK, NFIDAuthOptions } from '@nfid/wallet';
 
 // Set up the NFID Wallet SDK
 const options: NFIDAuthOptions = {
@@ -50,14 +50,42 @@ const options: NFIDAuthOptions = {
 const nfidWalletSDK = await NFIDWalletSDK.init(options)
 ```
 
-## Usage
+## Connect Accounts
+
+NOTE: The available provider has to be inferred by the provided configuration
+
 ```javascript
+# EVM chains
+await nfidWallet.provider.ethereum.connect();
+// or shorthand?
+await nfidWallet.connect();
+
+# IC
+await nfidWallet.provider.ic.getDelegation();
+// or shorthand?
+const delegationIdentity = await nfidWallet.getDelegation();
+
+const agent = new HttpAgent({ identity: delegationIdentity });
+
+```
+
+## Switch Accounts
+
+```javascript
+await nfidWallet.disconnect();
+await nfidWallet.connect();
+```
+
+
+## Events
+```javascript
+import type { NFIDEvents } from '@nfid/wallet';
 // Subscribe to events
-nfidWalletSDK.subscribe(ADAPTER_EVENTS.CONNECTED, () => {
+nfidWalletSDK.subscribe(NFIDEvents.CONNECTED, () => {
   console.log('User is authenticated');
 });
 
-nfidWalletSDK.subscribe(ADAPTER_EVENTS.DISCONNECTED, () => {
+nfidWalletSDK.subscribe(NFIDEvents.DISCONNECTED, () => {
   console.log('User is not authenticated');
 });
 
