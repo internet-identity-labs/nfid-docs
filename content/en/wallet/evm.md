@@ -10,9 +10,9 @@ NFID gives you access to the most popular EVM compatible chains like Ethereum an
 ## What you'll learn in this guide
 
 1. [Connect user and get the address](/wallet/evm#connect-user-and-get-the-address)
-2. Get account balance of native token (ETH | MATIC)
-3. Get token balance of ERC-20 tokens
-4. Request native token transfer
+2. [Get account balance of native token (ETH | MATIC)](/wallet/evm#get-account-balance-of-native-token-eth--matic)
+3. [Request native token transfer](/wallet/evm#request-native-token-transfer)
+4. [Get token balance of ERC-20 tokens](/wallet/evm#get-token-balance-of-erc-20-tokens)
 5. Request standard token (e.g ERC-20 | ERC-721 | ERC-1155) transfer
 
 6. Low level smart contract methods calls
@@ -26,7 +26,14 @@ const web3 = new Web3(nfidWallet.evm.getProvider(NFIDProvider.EVM.ETH_MAINNET));
 const address = (await web3.eth.getAccounts())[0];
 ```
 
-### Sending transactions
+### Get account balance of native token (ETH | MATIC)
+
+```typescript
+const web3 = new Web3(nfidWallet.evm.getProvider(NFIDProvider.EVM.ETH_MAINNET));
+var balance = web3.eth.getBalance(address);
+```
+
+### Request native token transfer
 
 ```typescript
 const destination = "0xE0cef4417a772512E6C95cEf366403839b0D6D6D";
@@ -40,4 +47,23 @@ const receipt = await web3.eth.sendTransaction({
 });
 ```
 
-## More Examples to build
+### Get token balance of ERC-20 tokens
+
+```typescript
+// The minimum ABI required to get the ERC20 Token balance
+const minABI = [
+  // balanceOf
+  {
+    name: "balanceOf",
+    constant: true,
+    inputs: [{ name: "_owner", type: "address" }],
+    outputs: [{ name: "balance", type: "uint256" }],
+    type: "function",
+  },
+];
+const tokenAddress = "0x0d8775f648430679a709e98d2b0cb6250d2887ef";
+
+const contract = new web3.eth.Contract(minABI, tokenAddress);
+const result = await contract.methods.balanceOf(address).call();
+const format = web3.utils.fromWei(result);
+```
