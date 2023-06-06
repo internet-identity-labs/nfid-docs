@@ -9,19 +9,6 @@ NFID returns a delegation identity to your application, which is able to call yo
 
 NFID gives you access to the Internet Computer. You're interacting with the Internet Computer by using our `IC Blockchain Provider`.
 
-## What you'll learn in this guide
-
-1. [Get the delegation identity and use to do queries to the IC](/wallet/icp#get-the-delegation-identity-and-use-to-do-queries-to-the-ic)
-2. [Get account balance of native token (ICP)](/wallet/icp#get-account-balance-of-native-token-icp)
-3. [Request native token transfer (ICP)](/wallet/icp#request-icp-transfer)
-4. [Get token balance of ICRC-1 tokens](/wallet/icp#get-token-balance-of-icrc-1-tokens)
-5. Request standard token (e.g ICRC-1 | ICRC-7) transfer
-
-6. Low level smart contract (canister) methods calls
-7. Configure using a derivation origin
-8. Configure multi canister applications
-9. How to use NFID in local development
-
 ### Get the delegation identity and use to do queries to the IC
 
 ```typescript

@@ -7,16 +7,6 @@ description: "The complete guide to NFID: the identity layer for the internet."
 
 NFID gives you access to the most popular EVM compatible chains like Ethereum and Polygon. You're interacting with those chains by using our `EVM Blockchain Provider`.
 
-## What you'll learn in this guide
-
-1. [Connect user and get the address](/wallet/evm#connect-user-and-get-the-address)
-2. [Get account balance of native token (ETH | MATIC)](/wallet/evm#get-account-balance-of-native-token-eth--matic)
-3. [Request native token transfer](/wallet/evm#request-native-token-transfer)
-4. [Get token balance of ERC-20 tokens](/wallet/evm#get-token-balance-of-erc-20-tokens)
-5. Request standard token (e.g ERC-20 | ERC-721 | ERC-1155) transfer
-
-6. Low level smart contract methods calls
-
 ### Connect user and get the address
 
 ```typescript
