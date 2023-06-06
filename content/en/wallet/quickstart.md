@@ -30,12 +30,6 @@ import type { NFIDConfiguration } from "@nfid/wallet";
 
 // Set up the NFID Wallet SDK
 const configuration: NFIDConfiguration = {
-  // Configure the chains you want to support
-  providers: [
-    NFIDProvider.EVM, // Ethereum, Polygon, Binance Smart Chain, Fantom, Avalanche, and many more
-    NFIDProvider.BTC, // Bitcoin
-    NFIDProvider.IC,  // Internet Computer
-  ],
   // Configure the network stage
   environment: 'testnet' // 'testnet' | 'production' | 'local'
   // Configure your application metadata
