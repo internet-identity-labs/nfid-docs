@@ -29,15 +29,15 @@ const address = (await web3.eth.getAccounts())[0];
 ### Get account balance of native token (ETH | MATIC)
 
 ```typescript
-const web3Eth = new Web3(
+const web3Ethereum = new Web3(
   nfidWallet.evm.getProvider(NFIDProvider.EVM.ETHEREUM_MAINNET)
 );
-const web3Mat = new Web3(
+const web3Matic = new Web3(
   nfidWallet.evm.getProvider(NFIDProvider.EVM.POLYGON_MAINNET)
 );
 
 var ethBalance = web3Eth.eth.getBalance(address);
-var ethBalance = web3Mat.eth.getBalance(address);
+var maticBalance = web3Mat.eth.getBalance(address);
 ```
 
 ### Request native token transfer
