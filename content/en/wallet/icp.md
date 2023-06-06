@@ -69,41 +69,6 @@ const balance = await chBtcContract.icrc1_balance_of({
 ### Request standard token (e.g ICRC-1 | ICRC-7) transfer
 
 ```typescript
-const icrc1TokenDid = `
-type Timestamp = nat64;
-
-type Account = record {
-    owner : principal;
-    subaccount : opt Subaccount;
-};
-
-type Subaccount = blob;
-
-type TransferArgs = record {
-    from_subaccount : opt Subaccount;
-    to : Account;
-    amount : nat;
-    fee : opt nat;
-    memo : opt blob;
-    created_at_time : opt Timestamp;
-};
-
-type TransferError = variant {
-    BadFee : record { expected_fee : nat };
-    BadBurn : record { min_burn_amount : nat };
-    InsufficientFunds : record { balance : nat };
-    TooOld;
-    CreatedInFuture: record { ledger_time : Timestamp };
-    Duplicate : record { duplicate_of : nat };
-    TemporarilyUnavailable;
-    GenericError : record { error_code : nat; message : text };
-};
-
-service : {
-    icrc1_transfer : (TransferArgs) -> (variant { Ok : nat; Err : TransferError });
-}
-`;
-
 const CHBTC_CANISTER_ID = "mxzaz-hqaaa-aaaar-qaada-cai";
 
 // FIXME: use correct IC Address
@@ -113,7 +78,6 @@ const response = await nfidWallet.request({
   method: "ic_callCanister",
   args: {
     canisterId: CHBTC_CANISTER_ID,
-    canisterDid: icrc1TokenDid,
     method: "icrc1_transfer",
     args: [{
       from_subaccount: identity.getPrincipal(),
