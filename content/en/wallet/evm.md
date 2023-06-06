@@ -32,13 +32,48 @@ var ethBalance = web3Eth.eth.getBalance(address);
 
 ### Matic
 
+additional packages:
+
+```bash
+npm install @maticnetwork/maticjs @maticnetwork/maticjs-web3
+```
+
 ```typescript
-// TODO: figure out how to talk to matic network
-const web3Matic = new Web3(
+import { POSClient, use } from "@maticnetwork/maticjs";
+import { Web3ClientPlugin } from "@maticnetwork/maticjs-web3";
+import HDWalletProvider from "@truffle/hdwallet-provider";
+
+// install web3 plugin
+use(Web3ClientPlugin);
+
+const web3 = new Web3(
   nfidWallet.evm.getProvider(NFIDProvider.EVM.POLYGON_MAINNET)
 );
 
-var maticBalance = web3Mat.eth.getBalance(address);
+const posClient = new POSClient();
+
+await posClient.init({
+  log: true,
+  network: "testnet",
+  version: "mumbai",
+  parent: {
+    provider: web3.currentProvider,
+    defaultConfig: {
+      from: address,
+    },
+  },
+  child: {
+    provider: web3.currentProvider,
+    defaultConfig: {
+      from: address,
+    },
+  },
+});
+
+const tokenAddress = "0x655f2166b0709cd575202630952d71e2bb0d61af";
+
+const erc20Token = posClient.erc20(tokenAddress, true);
+const balance = await erc20Token.getBalance(address);
 ```
 
 ### Request native token transfer
