@@ -26,17 +26,28 @@ const web3 = new Web3(nfidWallet.evm.getProvider(NFIDProvider.EVM.ETH_MAINNET));
 const address = (await web3.eth.getAccounts())[0];
 ```
 
-### Get account balance of native token (ETH | MATIC)
+### Get account balance of native token
+
+Each EVM compatible chain has its own native token. For example, Ethereum has ETH and Polygon has MATIC. You can get the balance of the native token by using the `getBalance` method on the corresponding `web3` instance.
+
+### Ethereum
 
 ```typescript
 const web3Ethereum = new Web3(
   nfidWallet.evm.getProvider(NFIDProvider.EVM.ETHEREUM_MAINNET)
 );
+
+var ethBalance = web3Eth.eth.getBalance(address);
+```
+
+### Matic
+
+```typescript
+// TODO: figure out how to talk to matic network
 const web3Matic = new Web3(
   nfidWallet.evm.getProvider(NFIDProvider.EVM.POLYGON_MAINNET)
 );
 
-var ethBalance = web3Eth.eth.getBalance(address);
 var maticBalance = web3Mat.eth.getBalance(address);
 ```
 
