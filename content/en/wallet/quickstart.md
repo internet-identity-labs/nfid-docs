@@ -24,7 +24,7 @@ yarn add @nfid/wallet
 To interact with the NFID wallet, we need to configure with which chains we want to interact. And how NFID should display your application:
 
 ```typescript
-import { NFIDWallet, NFIDProvider } from "@nfid/wallet";
+import { NFIDWallet } from "@nfid/wallet";
 import type { NFIDConfiguration } from "@nfid/wallet";
 
 
@@ -48,7 +48,7 @@ const nfidWallet = await NFIDWallet.init(configuration);
 await nfidWallet.connect();
 
 // get an object with all the connected addresses
-await nfidWallet.getAddress(); // { evm: '0x...', ic: '...', btc: '...' }
+await nfidWallet.getAddresses(); // { evm: '0x...', ic: '...', btc: '...' }
 ```
 
 ## What can you do with the created `nfidWallet` instance?

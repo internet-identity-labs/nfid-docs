@@ -7,15 +7,6 @@ description: "The complete guide to NFID: the identity layer for the internet."
 
 NFID gives you access to the most popular EVM compatible chains like Ethereum and Polygon. You're interacting with those chains by using our `EVM Blockchain Provider`.
 
-### Connect user and get the address
-
-```typescript
-import Web3 from "web3";
-
-const web3 = new Web3(nfidWallet.evm.getProvider(NFIDProvider.EVM.ETH_MAINNET));
-const address = (await web3.eth.getAccounts())[0];
-```
-
 ### Get account balance of native token
 
 Each EVM compatible chain has its own native token. For example, Ethereum has ETH and Polygon has MATIC. You can get the balance of the native token by using the `getBalance` method on the corresponding `web3` instance.
@@ -27,7 +18,9 @@ const web3Ethereum = new Web3(
   nfidWallet.evm.getProvider(NFIDProvider.EVM.ETHEREUM_MAINNET)
 );
 
-var ethBalance = web3Eth.eth.getBalance(address);
+const addresses = await nfidWallet.getAddresses(); // { evm: '0x...', ic: '...', btc: '...' }
+
+var ethBalance = web3Eth.eth.getBalance(addresses.evm);
 ```
 
 ### Matic
