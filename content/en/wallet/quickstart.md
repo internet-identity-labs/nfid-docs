@@ -49,6 +49,12 @@ const configuration: NFIDConfiguration = {
 
 
 const nfidWallet = await NFIDWallet.init(configuration);
+
+// Request authentication from NFID Wallet UI
+await nfidWallet.connect();
+
+// get an object with all the connected addresses
+await nfidWallet.getAddress(); // { evm: '0x...', ic: '...', btc: '...' }
 ```
 
 ## What can you do with the created `nfidWallet` instance?
