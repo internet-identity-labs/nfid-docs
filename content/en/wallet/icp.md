@@ -1,11 +1,13 @@
 ---
-title: ICP usage
+title: ICP
 position: 11
 category: NFID Wallet SDK
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
-NFID returns a delegation identity to your application, which is able to sign messages without wallet prompts. Support is currently limited to scoping the delegation's permissions for canisters you own. This means if you want to call any other canisters, it will require the user's approval in a wallet prompt.
+NFID returns a delegation identity to your application, which is able to call your application specific canisters without wallet prompts. If you want to call any other canisters, it will require the user's approval in a wallet prompt.
+
+NFID gives you access to the Internet Computer. You're interacting with the Internet Computer by using our `IC Blockchain Provider`.
 
 ## Prerequisites
 When submitting the request for a delegation identity, you need to provide the canister IDs that this delegation will have permission to call. To protect user assets and data in other canisters that aren't yours, you are required add a `get_whitelisted_frontends` method to each of the canisters you wish the delegation to have permission for. NFID will ensure the `event.origin` (the origin that's requesting a delegation) is in the returned array from this method for each canister in the `targets` array.

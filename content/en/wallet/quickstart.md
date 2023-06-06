@@ -37,7 +37,7 @@ const configuration: NFIDConfiguration = {
     NFIDProvider.IC,  // Internet Computer
   ],
   // Configure the network stage
-  environment: 'testnet' // 'testnet' | 'production'
+  environment: 'testnet' // 'testnet' | 'production' | 'local'
   // Configure your application metadata
   appConfig: {
     // The name of your application
@@ -60,55 +60,6 @@ The most important features are:
 - Requesting the account your users want to connect to your app
 - Let your users approve any transactions like buying NFTs, sending tokens or interacting with arbitrary smart contracts methods
 
-## EVM compatible chains
+[Proceed with EVM usage](/wallet/evm)
 
-NFID gives you access to the most popular EVM compatible chains like Ethereum, Polygon, Binance Smart Chain, Fantom, Avalanche, and many more. You're interacting with those chains by using our `EVM Blockchain Provider`.
-
-### Requesting the account your users want to connect to your app
-
-```typescript
-import Web3 from "web3";
-
-const web3 = new Web3(nfidWallet.evm.getProvider(NFIDProvider.EVM.ETH_MAINNET));
-const address = (await web3.eth.getAccounts())[0];
-```
-
-### Sending transactions
-
-```typescript
-const destination = "0xE0cef4417a772512E6C95cEf366403839b0D6D6D";
-const amount = web3.utils.toWei(1); // Convert 1 ether to wei
-
-// Submit transaction to the blockchain and wait for it to be mined
-const receipt = await web3.eth.sendTransaction({
-  from: address,
-  to: destination,
-  value: amount,
-});
-```
-
-## Internet Computer
-
-NFID gives you access to the Internet Computer. You're interacting with the Internet Computer by using our `IC Blockchain Provider`.
-
-### Requesting the account your users want to connect to your app
-
-```typescript
-const identity = await nfidWallet.ic.getDelegation();
-const address = identity.getPrincipal().toText();
-```
-
-### Sending transactions
-
-```typescript
-import { E8S } from "@nfid/wallet";
-
-const destination = "rrkah-fqaaa-aaaaa-aaaaq-cai";
-const amount = BigInt(1 * E8S); // 1 ICP
-
-nfidWallet.ic.sendTransaction({
-  from: address,
-  to: destination,
-  value: amount,
-});
-```
+[Proceed with ICP usage](/wallet/icp)
