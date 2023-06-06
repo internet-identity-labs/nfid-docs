@@ -167,13 +167,33 @@ const configuration: NFIDConfiguration = {
 
 ### Configure multi canister applications
 
-To connect multiple canister to your app, you need provide a list of allowed canister on your FE Canister or configured DerivationOrigin as a file `.well-known/multi-canister-application`. Each of those canister needs to have a file `.well-known/white-listed-domain` which links back to the FE Canister who can request a delegation for this canister.
+By default, NFID creates a delegation only for the canisterId derived from the request origin or the derivationOrigin.
+If you want to call multiple canisterId, you need to configure your application to allow this. And provide a list of allowed canisterIds within the request.
 
-NFID will internally query these files and if valid, will add those canisterIds to the target prop to create the delegation.
-
-## Switch Accounts
-
-```javascript
-await nfidWallet.disconnect();
-await nfidWallet.connect();
+```typescript
+const identity = await nfidWallet.ic.getDelegation({
+  targets: ["canister_id_1", "canister_id_2", "canister_id_3"],
+});
 ```
+
+To allow this, you have to provide a list of allowed canister on your FE Canister (e.g. `canister_id_1`) or configured DerivationOrigin as a file `.well-known/multi-canister-application`.
+
+```json
+{
+  "multiCanisterApplication": ["canister_id_2", "canister_id_3"]
+}
+```
+
+Each of those canister needs to host a file `.well-known/white-listed-domain` with the white listed delegation scopes.
+
+```json
+{
+  "whiteListedScopes": ["https://<canister_id_1>.ic0.app"]
+}
+```
+
+NFID fetches these files and if valid, will add those canisterIds to the target prop to create the delegation.
+
+#### Constraints
+
+Currently, a maximum of 10 additional canisterIds at the same time.
