@@ -9,109 +9,112 @@ NFID returns a delegation identity to your application, which is able to call yo
 
 NFID gives you access to the Internet Computer. You're interacting with the Internet Computer by using our `IC Blockchain Provider`.
 
-## Prerequisites
-When submitting the request for a delegation identity, you need to provide the canister IDs that this delegation will have permission to call. To protect user assets and data in other canisters that aren't yours, you are required add a `get_whitelisted_frontends` method to each of the canisters you wish the delegation to have permission for. NFID will ensure the `event.origin` (the origin that's requesting a delegation) is in the returned array from this method for each canister in the `targets` array.
+## What you'll learn in this guide
 
+1. [Get the delegation identity and use to do queries to the IC](/wallet/icp#get-the-delegation-identity-and-use-to-do-queries-to-the-ic)
+2. [Get account balance of native token (ICP)](/wallet/icp#get-account-balance-of-native-token-icp)
+3. [Request native token transfer (ICP)](/wallet/icp#request-icp-transfer)
+4. [Get token balance of ICRC-1 tokens](/wallet/icp#get-token-balance-of-icrc-1-tokens)
+5. Request standard token (e.g ICRC-1 | ICRC-7) transfer
+
+6. Low level smart contract (canister) methods calls
+7. Configure using a derivation origin
+8. Configure multi canister applications
+9. How to use NFID in local development
+
+### Get the delegation identity and use to do queries to the IC
+
+```typescript
+const identity = await nfidWallet.ic.getDelegation();
 ```
-# Rust implementation
 
-# Motoko implementation
+### Get account balance of native token (ICP)
+
+```typescript
+import { principalToAddress } from "ictool";
+
+const principal = identity.getPrincipal();
+const balance = await nfidWallet.ic.getBalance(principalToAddress(principal));
 ```
 
-## Install
-This guide assumes familiarity with building on the IC. More information can be found [here](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove). Your environment will need:
-- dfx SDK
-- node
-- @dfinity/agent, @dfinity/identity, and @dfinity/auth-client node packages >v0.11.0
+### Request native token transfer (ICP)
 
-Create an instance of the NFIDWalletSDK by providing the SDK configuration NFIDWalletConfig.
+```typescript
+import { E8S } from "@nfid/wallet";
 
-```javascript
-import { NFIDWalletSDK, NFIDAuthOptions } from '@nfid/wallet';
+// FIXME: use correct IC Address
+const destination = "rrkah-fqaaa-aaaaa-aaaaq-cai";
+const amount = BigInt(1 * E8S); // 1 ICP
 
-// Set up the NFID Wallet SDK
-const options: NFIDAuthOptions = {
-  chainConfig: {
-    chainNamespace: CHAIN_NAMESPACES.EIP155,
-    chainId: '0x5',
-    // https://chainlist.org/
-    rpcTarget: `https://rpc.ankr.com/eth_goerli`
-  },
-  // icConfig is only for Internet Computer developers
-  // see [here](icp)
-  icConfig: {
-    targets: [canisterIDs],
-    derivationOrigin: derivationOrigin
-  }
+nfidWallet.ic.sendTransaction({
+  from: address,
+  to: destination,
+  value: amount,
+});
+```
+
+### Get token balance of ICRC-1 tokens
+
+```typescript
+const CHBTC_CANISTER_ID = "mxzaz-hqaaa-aaaar-qaada-cai";
+
+// SmartContract interface (idl: interface definition language)
+const idlFactory = ({ IDL }) => {
+  const Account = IDL.Record({
+    owner: IDL.Principal,
+    subaccount: IDL.Opt(IDL.Vec(IDL.Nat8)),
+  });
+  return IDL.Service({
+    // ... other methods
+    icrc1_balance_of: IDL.Func([Account], [IDL.Nat], ["query"]),
+    // ... other methods
+  });
+};
+
+const chBtcContract = actor(CHBTC_CANISTER_ID, idlFactory);
+
+const balance = await chBtcContract.icrc1_balance_of({
+  owner: identity.getPrincipal(),
+  subaccount: [],
+});
+```
+
+### How to use NFID in local development
+
+```typescript
+import {getMockIdentity} from '@nfid/wallet';
+
+const configuration: NFIDConfiguration = {
+  // Configure the chains you want to support
+  providers: [
+    {
+      ...NFIDProvider.IC,  // Internet Computer
+      // The identity is now working on your local replica without certificate issues
+      // It won't open NFID wallet and the provider will directly respond with that mocked identity
+      mockIdentity: getMockIdentity(0), // 1, 2, 3, 4, 5 are also available
+    }
+  ],
+  // Configure the network stage
+  environment: 'local' // 'testnet' | 'production' | 'local'
+  // Configure your application metadata
   appConfig: {
-    icon: 'url/to/icon.png',
-    name: 'appName'
-  }
-}
-
-const nfidWalletSDK = await NFIDWalletSDK.init(options)
+    // The name of your application
+    name: "appName",
+    // Your logo displayed within NFID Wallet for transaction approval and other interactions
+    icon: "url/to/application-icon.png",
+  },
+};
 ```
 
-## Connect Accounts
+### Configure multi canister applications
 
-NOTE: The available provider has to be inferred by the provided configuration
+To connect multiple canister to your app, you need provide a list of allowed canister on your FE Canister or configured DerivationOrigin as a file `.well-known/multi-canister-application`. Each of those canister needs to have a file `.well-known/white-listed-domain` which links back to the FE Canister who can request a delegation for this canister.
 
-```javascript
-# EVM chains
-await nfidWallet.provider.ethereum.connect();
-// or shorthand?
-await nfidWallet.connect();
-
-# IC
-await nfidWallet.provider.ic.getDelegation();
-// or shorthand?
-const delegationIdentity = await nfidWallet.getDelegation();
-
-const agent = new HttpAgent({ identity: delegationIdentity });
-
-```
+NFID will internally query these files and if valid, will add those canisterIds to the target prop to create the delegation.
 
 ## Switch Accounts
 
 ```javascript
 await nfidWallet.disconnect();
 await nfidWallet.connect();
-```
-
-
-## Events
-```javascript
-import type { NFIDEvents } from '@nfid/wallet';
-// Subscribe to events
-nfidWalletSDK.subscribe(NFIDEvents.CONNECTED, () => {
-  console.log('User is authenticated');
-});
-
-nfidWalletSDK.subscribe(NFIDEvents.DISCONNECTED, () => {
-  console.log('User is not authenticated');
-});
-
-// Connect the user's NFID Wallet
-// The signIn method will return the user's address for the selected network
-// The await will last until the user is authenticated so while the UI modal is displayed
-// authClient is the returned delegation identity
-const authClient = await nfidWalletSDK.signIn();
-
-// Once the user has been authenticated, set up an agent and an actor
-const identity = authClient.getIdentity();
-// Using the identity obtained from the auth client, create an agent to interact with the IC
-const agent = new HttpAgent({ identity });
-// Using the interface description of your webapp, create an Actor to call its service methods
-const webapp = Actor.createActor(webapp_idl, {
-  agent,
-  canisterId: webapp_id,
-});
-
-// The signOut method will remove the current session
-await nfidWalletSDK.signOut();
-```
-
-## Sign transactions
-```javascript
-await nfidWalletSDK.sendTransaction(tx);
 ```
