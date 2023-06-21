@@ -4,15 +4,16 @@ position: 41
 category: How It Works
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
+<div class="-mt-4"><p class="text-gray-600 dark:text-gray-400">Find more at the source <a href="https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol">IC reference</a>.
 
 ## Introduction
-When an ICP client wants to authenticate a user, it uses a *session key* (e.g., Ed25519 or ECDSA), and by way of the authentication flow (details below) obtains a [delegation chain](https://internetcomputer.org/docs/current/references/ic-interface-spec#authentication) that allows the session key to sign for the user's main identity.
+When an ICP client wants to authenticate a user, it uses a *session key* (e.g., Ed25519 or ECDSA), and by way of the authentication flow (details below) obtains a [delegation chain](https://internetcomputer.org/docs/current/references/ic-interface-spec/#certification-delegation) that allows the session key to sign for the user's main identity.
 
 The delegation chain consists of one delegation, called the *client delegation*, that delegates from the user identity to the session key. This delegation is created by the NFID Delegator smart contract, and signed using a [smart contract (canister) signature](https://hydra.dfinity.systems/latest/dfinity-ci-build/ic-ref.pr-319/interface-spec/1/index.html#canister-signatures). This delegation is scoped to the client's canisters and has a maximum lifetime of 30 days, with a default of 30 minutes.
 
 The NFID client also manages an *NFID delegation*, delegating from the passkey's public key to a session key managed by this frontend, so that it can interact with its smart contracts without having to invoke the passkey for each signature.
 
-When non-ICP clients want to authenticate a user, it receives a `provider`, which is constructed on the frontend by the *NFID delegation*.
+When non-ICP clients want to authenticate a user, it receives a `provider`, constructed on the frontend by the *NFID delegation*.
 
 ### From the point of view of a client ICP application:
 1. The application frontend creates a session key pair (e.g., Ed25519).

@@ -4,6 +4,7 @@ position: 42
 category: How It Works
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
+<div class="-mt-4"><p class="text-gray-600 dark:text-gray-400">Find more at the source <a href="https://internetcomputer.org/docs/current/references/ic-interface-spec/#signatures">IC reference</a>.
 
 ## Introduction
 Digital signature schemes are used for authenticating messages in various parts of the IC infrastructure. Signatures are domain separated, which means that every message is prefixed with a byte string that is unique to the purpose of the signature.
