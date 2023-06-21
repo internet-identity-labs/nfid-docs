@@ -10,34 +10,46 @@ features:
   - Biometric login on any device, platform, or channel
 ---
 
-NFID is a set of smart contracts on the Internet Computer that users can create identities with and store GBs of tamper-resistent, encrypted data in, including private keys. The current development focus is on making self-sovereign private key management feel like a web2 experience. NFID achieves this with the Internet Computer's smart contracts and native chain-key cryptography, allowing the generation of `delegation identities` that can make authenticated smart contract calls without user approval prompts, and encrypt/decrypt its own data (like private keys). Even if private keys were stored unencrypted, the Internet Computer's design makes it extremely difficult for node providers to read them (and even more difficult with the introduction of node shuffling, hardware encryption, and other protocol-level upgrades).
+## Introduction
+NFID is a set of smart contracts on the Internet Computer that users can create identities and store GBs of tamper-resistent, encrypted data in, including private keys. The current development focus is on making self-sovereign private key management feel like a web2 experience. NFID achieves this with the Internet Computer's smart contracts and native chain-key cryptography, allowing the generation of `delegation identities` that can make authenticated smart contract calls without user approval prompts, and encrypt/decrypt its own data.
+
+## Goals, requirements, and use cases
+### The NFID protocol allows users to
+- Manage private keys and their assets across a variety of [supported networks](../#currently-supported-chains)
+- Sign in using an email address or one out of a set of passkeys (when 2FA is enabled)
+- Authenticate to 3rd party applications
+### Functional requirements
+- Users have one identifier for each supported network
+- These identities are stable (i.e. do not depend on the email or passkey from which the user authenticated)
+- Users do not need to remember secret information
+- ICP clients can use the user's identity (`client delegation`) to interact with their own canisters and look up balances, and are otherwise enforced to request user approval [with the SDK](../integration/icp)
+- Each `client delegation` has a session duration during which it can make authenticated calls
+- Non-ICP clients can use the user's identity (`provider`) to look up balances and request signatures [with the SDK](../integration/evm)
+### Security requirements
+- Email addresses are private to users, never to be exposed without user consent
+- The delegations handed out to 3rd party applications by NFID must be targeted with the frontend application's canisters only
+- Private keys can not be reconstructed without user authentication
+- Users can not be authenticated without a passkey if 2FA is enabled and otherwise without a Google token / magic link open
+### Security assumptions
+- The delivery of frontend applications is secure. In particular, a user accessing NFID through a TLS-secured HTTP connection cannot be tricked into running another web application.
+- Passkeys are trustworthy
+- The user's browser is trustworthy
 
 ## The NFID identity (NFIDentity)
-Users create an NFIDentity when they open the magic link sent to their email address or authenticate with Google. At a high level:
-- The user is assigned an on-chain identifier - an NFIDentity - an incrementing unique number
-- The user's email authentication token generates a `delegation identity` - an actor capable of making authenticated smart contract calls and encrypting/decrypting its own data
-- The user's `delegation identity` generates, encrypts, splits, and stores private keys to different networks (Ethereum, Polygon, Bitcoin, and Internet Computer as of July 2023)
+A user account is identified by a unique NFIDentity, a natural number chosen by the smart contract.
+A user has a different identity for each network.
+On non-ICP networks, this identity is a `provider`.
+On ICP, this identity is a [self-authenticating id](https://internetcomputer.org/docs/current/references/ic-interface-spec#id-classes) of the [DER encoded canister signature public key](https://internetcomputer.org/docs/current/references/ic-interface-spec/#canister-signatures) which has the form:
+```
+user_id = SHA-224(DER encoded public key) · 0x02` (29 bytes)
+```
+> *More on [public key encoding and signatures](./signatures)*
 
-## Passkey delegations
-Users can remove their email as a point of attack by opting in to passkey authentication and signing (2FA). When 2FA is enabled, `delegation identities` can only be generated when a passkey signs a frontend challenge to delegate authority to a session key. Given the strength and security of passkeys, this makes user's blockchain keys completely inaccessible to anyone but the device owners. Biometric auth simultaneously simplifies the UX by removing password requirements.
-
-Users can have multiple passkeys in case they have multiple devices from which they want to authenticate. Having multiple further simplifies the experience and reduces the risk of identity loss, especially when using hybrid keys (those secured in the "cloud" by Apple, Google, and Microsoft). Our research gives us no reason to doubt the security models of hybrid passkey storage, but having a USB stick (i.e. Yubikey or other FIDO-cabable hardware wallet) is always a good backup.
-
-## NFID in a 3rd party context
-When users authenticate to a 3rd party app, NFID returns either a `delegation identity` or a `provider` depending on the SDK configuration. ETH and MATIC devs will be familiar with the `provider` to view balances and request signatures, whereas an ICP dev will use a `delegation identity`.
-
-Delegations are strictly scoped such that it only has permission to call smart contracts (canisters) owned by the application. Calls to other smart contracts will result in a wallet prompt.
-
-## High level architecture
-The NFID SDK handles the interactions between OAuth token / public key providers, NFID smart contracts, and the signing protocol.
-
-This diagram below describes the relationship between the NFID iframe and integrating application:
-
-<img src="../nfid-authentication-flow.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
-
-> **NOTE:** Each user can request ECDSA signatures without any party's involvement.
-
-[Integrating the NFID SDK](../integration/quickstart) is simple for developers. Simply initialize the SDK with a `chainId` and authenticate users by calling the `signIn()` function with a simple login button.
+The NFID Identity Manager smart contract stores the following data in user accounts, indexed by the respective NFIDentity:
+- A set of *device information*, consisting of
+  - the device's public key (DER-encoded)
+  - a device alias, matched by aaguid and editable by the user, to recognize the device
+  - an optional credential id, which is necessary for WebAuthn authentication
 
 ## NFID user flow with your application
 Users authenticate using email (or FIDO-based device biometrics for returning users with 2FA enabled).
@@ -47,3 +59,6 @@ Users authenticate using email (or FIDO-based device biometrics for returning us
 3. When your application requests a signature, the NFID iframe reappears for user approval.
 
 <img src="../nfid-embed-flow.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
+
+## The node network
+As of May 2023, the base protocol consists of [549 (live) nodes](https://dashboard.internetcomputer.org/nodes) run by [75 (live) node providers](https://dashboard.internetcomputer.org/providers) across [44 (live) geographically distributed data centers](https://dashboard.internetcomputer.org/centers).

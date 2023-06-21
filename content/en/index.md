@@ -12,16 +12,17 @@ features:
 
 ## What is NFID?
 
-NFID is a self-custodial identity provider and key management layer that makes it easy for anyone to make and use multi-chain accounts</br></br>
+NFID is a self-custodial identity provider and key management layer that makes it easy for anyone to make and use multi-chain accounts.
 
 ## What is NFID SDK?
 
-The @nfid/wallet npm package is a JavaScript SDK that easily integrates the NFID UI into your application. It allows you to display NFID in a modal for user authentication, registration, and transaction signatures.
-[read more](./integration/quickstart)
+The `@nfid/core` npm package is a JavaScript SDK that easily integrates [NFID's Client Authentication Protocol](./how-it-works/auth-protocol) for user authentication, registration, and transaction signatures.
+
+Get started with [integration](./integration/quickstart).
 
 ## What is NFID Vaults?
 
-NFID Vaults is the most powerful multi-approver (multi-sig) platform for ICP.</br></br>
+NFID Vaults is the most powerful multi-approver (multi-sig) platform for ICP.
 
 ## Currently supported chains
 
