@@ -1,7 +1,7 @@
 ---
 title: ICP
 position: 11
-category: NFID Wallet SDK
+category: Integration
 description: "The complete guide to NFID: the identity layer for the internet."
 ---
 
