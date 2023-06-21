@@ -12,7 +12,7 @@ features:
 
 ## What is NFID?
 
-NFID is a self-custodial identity provider and key management layer that makes it easy for anyone to make and use multi-chain accounts.
+NFID is a self-custodial identity provider and key management protocol that makes it easy for anyone to make and use multi-chain accounts.
 
 ## What is NFID SDK?
 
