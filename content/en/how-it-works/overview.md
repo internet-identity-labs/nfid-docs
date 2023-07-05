@@ -11,7 +11,7 @@ features:
 ---
 
 ## Introduction
-NFID is a set of smart contracts on the Internet Computer where users create identities and store GBs of tamper-resistent, encrypted data. The current phase of development is to make self-sovereign private key management feel like a web2 experience. NFID achieves this with the Internet Computer's smart contracts and cryptographic primitives, which allow the generation of `delegation identities` that can make authenticated smart contract calls without user approval prompts, and encrypt/decrypt its own data.
+NFID is a set of smart contracts on the Internet Computer where users create identities and store GBs of tamper-resistent, encrypted data. The current phase of development is to make self-sovereign private key management feel like a web2 experience. NFID achieves this with the Internet Computer's smart contracts and cryptographic primitives, which allow the generation of powerful, self-sovereign `delegation identities` that can make authenticated smart contract calls without user approval prompts, and encrypt/decrypt its own data.
 
 ## Goals, requirements, and use cases
 ### The NFID protocol currently allows users to
@@ -19,31 +19,31 @@ NFID is a set of smart contracts on the Internet Computer where users create ide
 - Sign in using an email address or one out of a set of passkeys (when 2FA is enabled)
 - Authenticate to client (3rd party) applications
 ### Functional requirements
-- Users have one identifier for each supported network, with the option to extend with stealth addresses
+- Users have one identifier for each supported network, with the option to extend with app and stealth addresses
 - These identities are stable (i.e. do not depend on the email or passkey from which the user authenticated)
 - Users do not need to remember secret information
-- ICP clients can use the user's identity (`client delegation`) to interact with their own canisters and look up balances, and are otherwise enforced to request user approval ([see SDK](../integration/icp))
+- Clients can use the user's identity (`client delegation`) to interact with their own smart contracts (canisters), look up balances, and are otherwise enforced to request user approval ([see SDK](../integration/icp))
 - Each `client delegation` has a session duration during which it can make authenticated calls
-- Non-ICP clients can use the user's identity (`provider`) to look up balances and request signatures ([see SDK](../integration/evm))
+- Non-ICP clients (i.e. EVM dapps) can use the user's identity (`provider`) to look up balances and request signatures ([see SDK](../integration/evm))
 ### Security requirements
 - Email addresses are private to users, never to be exposed without user consent
 - `Client delegations` handed out to client applications by NFID must be targeted with the frontend application's canisters only
 - Private keys can not be reconstructed without user authentication
-- Users can not authenticate without a passkey if 2FA is enabled, and otherwise without a Google token or magic link
+- Users can not authenticate without a passkey if 2FA is enabled, and otherwise without a Google token or opening a magic link
 ### Security assumptions
 - The delivery of frontend applications is secure. In particular, a user accessing NFID through a TLS-secured HTTP connection cannot be tricked into running another web application.
 - Passkeys are trustworthy
 - The user's browser is trustworthy
 
 ## The NFID identity (NFIDentity)
-A user account is identified by a unique NFIDentity, a natural number chosen by the smart contract.
-A user has a different identity for each network.
-On non-ICP networks, this identity is a `provider`.
-On ICP, this identity is a [self-authenticating id](https://internetcomputer.org/docs/current/references/ic-interface-spec#id-classes) of the [DER encoded canister signature public key](https://internetcomputer.org/docs/current/references/ic-interface-spec/#canister-signatures) which has the form:
-```
-user_id = SHA-224(DER encoded public key) · 0x02` (29 bytes)
-```
-> *More on [public key encoding and signatures](./signatures)*
+- A user account is identified by a unique NFIDentity, a natural number chosen by the smart contract.
+- A user has one address for each network (same across EVM).
+- When a user authenticates to non-ICP network applications, the returned identity is a `provider`.
+- When a user authenticates to ICP network applications, the returned identity is a [self-authenticating id](https://internetcomputer.org/docs/current/references/ic-interface-spec#id-classes) of the [DER encoded canister signature public key](https://internetcomputer.org/docs/current/references/ic-interface-spec/#canister-signatures) which has the form:
+    ```
+    user_id = SHA-224(DER encoded public key) · 0x02` (29 bytes)
+    ```
+    > *More on [public key encoding and signatures](./signatures)*
 
 The NFID Identity Manager smart contract stores the following data in user accounts, indexed by the respective NFIDentity:
 - A set of *device information*, consisting of
