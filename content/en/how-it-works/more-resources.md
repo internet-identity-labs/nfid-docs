@@ -8,13 +8,12 @@ description: "The complete guide to NFID: the identity layer for the internet."
 The Internet Computer was chosen as the base layer for NFID because its smart contracts (which the DFINITY Foundation has named *canisters*) are the most powerful on the internet today. The protocol is so strong that explaining NFID in this documentation relies on explaining how the Internet Computer works, which is why we included the protocol's specification documents in previous sections. 
 
 Internet Computer smart contracts (canisters):
-- Can directly interface with HTTPS endpoints
-- Are extremely fast (2-second update calls, 200ms query calls)
-- Can hold secrets
-- Can store GBs of data
-- Can issue delegation chains from passkey signatures
+- Can issue delegation chains from passkey signatures, which is the fundamental innovation for secure authentication
+- Can directly interface with HTTPS endpoints, which NFID uses when interfacing with web2 servers
+- Can hold secrets, which NFID relies on to store encrypted data
+- Are extremely fast (2-second update calls where consensus is required, 200ms query calls where consensus is not required), which NFID relies on for consumer-grade UX
+- Can store GBs of data, which NFID will utilize in the future
 - Can directly interface with the Bitcoin (and soon Ethereum) networks and smart contracts
-- Incorporates new code through powerful on-chain governance
 
 We're including a list of helpful resources if you're unfamiliar with the Internet Computer and want to learn more:s
 - [Capabilities](https://internetcomputer.org/capabilities) for a high-level overview of what the network does

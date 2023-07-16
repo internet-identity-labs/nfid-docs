@@ -9,6 +9,7 @@ features:
   - No app downloads
   - Biometric login on any device, platform, or channel
 ---
+<div class="-mt-4"><p class="text-gray-600 dark:text-gray-400">Find more at the source <a href="https://internetcomputer.org/docs/current/references/ii-spec">IC reference</a>.
 
 ## Introduction
 NFID is a set of smart contracts on the Internet Computer where users create identities and store GBs of tamper-resistent, encrypted data. The current phase of development is to make self-sovereign private key management feel like a web2 experience. NFID achieves this with the Internet Computer's smart contracts and cryptographic primitives, which allow the generation of powerful, self-sovereign `delegation identities` that can make authenticated smart contract calls without user approval prompts, and encrypt/decrypt its own data.
