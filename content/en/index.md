@@ -1,18 +1,14 @@
 ---
 title: Welcome
 position: 0
-description: "The complete guide to NFID: the identity layer for the internet."
-features:
-  - Decentralized, self-sovereign identity provider
-  - No usernames or passwords
-  - Biometric login on any device, platform, or channel
+description: "The complete guide to NFID"
 ---
 
 <img src="dscvr-login.png" style="width:100%;margin:auto;margin-bottom:50px"></img>
 
 ## What is NFID?
 
-NFID is a self-custodial identity provider and key management protocol for consumers that makes it easy for anyone to make and use multi-chain accounts.
+NFID is a self-custodial identity provider and key management protocol that makes it easy for anyone to make and use multi-chain accounts.
 
 ## What is NFID SDK?
 

@@ -2,8 +2,10 @@
 title: ICP
 position: 11
 category: Integration
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 ---
+
+## THIS SECTION IS IN DEVELOPMENT - ETA SEPTEMBER
 
 NFID returns a delegation identity to your application, which is able to call your application specific canisters without wallet prompts. If you want to call any other canisters, it will require the user's approval in a wallet prompt.
 

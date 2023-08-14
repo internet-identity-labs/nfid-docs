@@ -1,13 +1,8 @@
 ---
 title: Overview
 position: 40
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 category: How It Works
-features:
-  - Decentralized, self-sovereign identity provider
-  - No usernames or passwords
-  - No app downloads
-  - Biometric login on any device, platform, or channel
 ---
 <div class="-mt-4"><p class="text-gray-600 dark:text-gray-400">Find more at the source <a href="https://internetcomputer.org/docs/current/references/ii-spec">IC reference</a>.
 

@@ -2,7 +2,7 @@
 title: More resources
 position: 43
 category: How It Works
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 ---
 
 The Internet Computer was chosen as the base layer for NFID because its smart contracts (which the DFINITY Foundation has named *canisters*) are the most powerful on the internet today. The protocol is so strong that explaining NFID in this documentation relies on explaining how the Internet Computer works, which is why we included the protocol's specification documents in previous sections. 

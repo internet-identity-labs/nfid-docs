@@ -2,7 +2,7 @@
 title: Signatures
 position: 42
 category: How It Works
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 ---
 <div class="-mt-4"><p class="text-gray-600 dark:text-gray-400">Find more at the source <a href="https://internetcomputer.org/docs/current/references/ic-interface-spec/#signatures">IC reference</a>.
 

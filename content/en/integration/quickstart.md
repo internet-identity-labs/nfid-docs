@@ -2,8 +2,10 @@
 title: Quickstart
 position: 10
 category: Integration
-description: Developer tools
+description: The complete guide to NFID
 ---
+
+## THIS SECTION IS IN DEVELOPMENT - ETA SEPTEMBER
 
 The @nfid/core npm package is a TypeScript SDK that easily integrates the NFID UI into your application. It allows you to display NFID in a modal for user authentication, registration, and transaction signatures.
 

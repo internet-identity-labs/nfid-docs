@@ -2,7 +2,7 @@
 title: Members
 position: 63
 category: NFID Vaults
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 ---
 
 <img src="../vault-members.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
