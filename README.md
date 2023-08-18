@@ -2,6 +2,8 @@
 
 ## Setup
 
+Use node v18 (Vercel requires it)
+
 Install dependencies:
 
 ```bash
