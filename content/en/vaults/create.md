@@ -2,7 +2,7 @@
 title: Create Vault
 position: 61
 category: NFID Vaults
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 ---
 
 <img src="../vaults-empty.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>

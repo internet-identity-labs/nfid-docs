@@ -2,7 +2,7 @@
 title: Policies
 position: 64
 category: NFID Vaults
-description: "The complete guide to NFID: the identity layer for the internet."
+description: "The complete guide to NFID"
 ---
 
 <img src="../vault-policies.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
