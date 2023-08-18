@@ -7,14 +7,14 @@ category: Legal
 * * *
 This privacy policy is applicable to the NFID website ([https://nfid.one](https://nfid.one)).
 
-Owner and Data Controller[​](#owner-and-data-controller "Direct link to heading")
+Owner and Data Controller​
 ---------------------------------------------------------------------------------
 
 Internet Identity Labs, Inc, New York, NY
 
 **Contact email:** [hello@identitylabs.ooo](mailto:hello@identitylabs.ooo)
 
-Types of Data Collected[​](#types-of-data-collected "Direct link to heading")
+Types of Data Collected
 -----------------------------------------------------------------------------
 
 Among the types of Personal Data that Internet Identity Labs collects, by itself or through third parties, there is: Usage Data.
@@ -25,7 +25,7 @@ Personal Data may be freely provided by the User, or, in case of Usage Data, col
 
 Data requested by Internet Identity Labs is not mandatory and failure to provide this Data does not make it impossible for Internet Identity Labs to provide its services. Users are free not to communicate this Data without consequences to the availability or the functioning of the Service.
 
-Private data related to the account, such as phone numbers, and email addresses will not be collected by Internet Identity Labs, and is not mandatory to the use of service.
+Private data related to the account, such as an email address will be collected by Internet Identity Labs, as it is mandatory to the use of service. In particular, enabling 2FA with passkeys require a memorable username and will be the account's email address for clearly understanding which account is being authenticated.
 
 Users who are uncertain about which Personal Data is mandatory are welcome to contact the Owner.
 
@@ -33,14 +33,14 @@ Any use of other tracking tools by Internet Identity Labs or by the owners of th
 
 Users are responsible for any third-party Personal Data obtained, published or shared through Internet Identity Labs and confirm that they have the third party's consent to provide the Data to the Owner.
 
-Mode and Place of Processing the Data[​](#mode-and-place-of-processing-the-data "Direct link to heading")
+Mode and Place of Processing the Data
 ---------------------------------------------------------------------------------------------------------
 
-### Methods of Processing[​](#methods-of-processing "Direct link to heading")
+### Methods of Processing
 
 The Owner takes appropriate security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the Data. The Data processing is carried out using computers and/or IT enabled tools, following organizational procedures and modes strictly related to the purposes indicated. In addition to the Owner, in some cases, the Data may be accessible to certain types of persons in charge, involved with the operation of Internet Identity Labs (administration, sales, marketing, legal, system administration) or external parties (such as third-party technical service providers, mail carriers, hosting providers, IT companies, communications agencies) appointed, if necessary, as Data Processors by the Owner. The updated list of these parties may be requested from the Owner at any time.
 
-### Legal Basis of Processing[​](#legal-basis-of-processing "Direct link to heading")
+### Legal Basis of Processing
 
 The Owner may process Personal Data relating to Users if one of the following applies:
 
@@ -52,9 +52,9 @@ The Owner may process Personal Data relating to Users if one of the following ap
 
 In any case, the Owner will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.
 
-### Place[​](#place "Direct link to heading")
+### Place
 
-The Data is processed at the Owner's operating offices and in any other places where the parties involved in the processing are located.
+The Data is processed at the Owner's operating offices and in any other places where the parties involved in the processing are located. Where anonymized Data is processed by Posthog, it never leaves their GDPR-compliant EU servers.
 
 Depending on the User's location, data transfers may involve transferring the User's Data to a country other than their own. To find out more about the place of processing of such transferred Data, Users can check the section containing details about the processing of Personal Data.
 
@@ -62,7 +62,7 @@ Users are also entitled to learn about the legal basis of Data transfers to a co
 
 If any such transfer takes place, Users can find out more by checking the relevant sections of this document or inquire with the Owner using the information provided in the contact section.
 
-### Retention Time[​](#retention-time "Direct link to heading")
+### Retention Time
 
 Personal Data shall be processed and stored for as long as required by the purpose they have been collected for.
 
@@ -75,27 +75,27 @@ The Owner may be allowed to retain Personal Data for a longer period whenever th
 
 Once the retention period expires, Personal Data shall be deleted. Therefore, the right to access, the right to erasure, the right to rectification and the right to data portability cannot be enforced after expiration of the retention period.
 
-The Purposes of Processing[​](#the-purposes-of-processing "Direct link to heading")
+The Purposes of Processing
 -----------------------------------------------------------------------------------
 
 The Data concerning the User is collected to allow the Owner to provide its Services, as well as for the following purposes: Analytics, registration and authentication.
 
 Users can find further detailed information about such purposes of processing and about the specific Personal Data used for each purpose in the respective sections of this document.
 
-Detailed Information on the Processing of Personal Data[​](#detailed-information-on-the-processing-of-personal-data "Direct link to heading")
+Detailed Information on the Processing of Personal Data
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
 Personal Data is collected for the following purposes and using the following services:
 
-### Analytics[​](#analytics "Direct link to heading")
+### Analytics
 
 The services contained in this section enable the Owner to monitor and analyze web traffic and can be used to keep track of User behavior.
 
-**Google Analytics (Google LLC)**
+**Posthog (Posthog Inc)**
 
-Google Analytics is a web analysis service provided by Google LLC (“Google”). Google utilizes the Data collected to track and examine the use of Internet Identity Labs, to prepare reports on its activities and share them with other Google services. Google may use the Data collected to contextualize and personalize the ads of its own advertising network.
+PostHog is a product analytics suite built for the modern enterprise, with the differentiators of being open source and having a broader view of the tools needed to make a product successful.
 
-### Registration and Authentication[​](#registration-and-authentication "Direct link to heading")
+### Registration and Authentication
 
 By registering or authenticating, Users allow Internet Identity Labs to identify them and give them access to dedicated services. Depending on what is described below, third parties may provide registration and authentication services. In this case, Internet Identity Labs will be able to access some Data, stored by these third-party services, for registration or identification purposes.
 
@@ -107,7 +107,7 @@ Personal Data collected: various types of Data as specified in the privacy polic
 
 Place of processing: United States – [Privacy Policy](https://policies.google.com/privacy). Privacy Shield participant.
 
-The Rights of Users[​](#the-rights-of-users "Direct link to heading")
+The Rights of Users
 ---------------------------------------------------------------------
 
 Users may exercise certain rights regarding their Data processed by the Owner.
@@ -123,45 +123,45 @@ In particular, Users have the right to do the following:
 *   **Receive their Data and have it transferred to another controller.** Users have the right to receive their Data in a structured, commonly used and machine readable format and, if technically feasible, to have it transmitted to another controller without any hindrance. This provision is applicable provided that the Data is processed by automated means and that the processing is based on the User's consent, on a contract which the User is part of or on pre-contractual obligations thereof.
 *   **Lodge a complaint.** Users have the right to bring a claim before their competent data protection authority.
 
-### Details about the Right to Object to Processing[​](#details-about-the-right-to-object-to-processing "Direct link to heading")
+### Details about the Right to Object to Processing
 
 Where Personal Data is processed for a public interest, in the exercise of an official authority vested in the Owner or for the purposes of the legitimate interests pursued by the Owner, Users may object to such processing by providing a ground related to their particular situation to justify the objection.
 
 Users must know that, however, should their Personal Data be processed for direct marketing purposes, they can object to that processing at any time without providing any justification. To learn, whether the Owner is processing Personal Data for direct marketing purposes, Users may refer to the relevant sections of this document.
 
-### How to Exercise these Rights[​](#how-to-exercise-these-rights "Direct link to heading")
+### How to Exercise these Rights
 
 Any requests to exercise User rights can be directed to the Owner through the contact details provided in this document. These requests can be exercised free of charge and will be addressed by the Owner as early as possible and always within one month.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Legal Action[​](#legal-action "Direct link to heading")
+### Legal Action
 
 The User's Personal Data may be used for legal purposes by the Owner in Court or in the stages leading to possible legal action arising from improper use of Internet Identity Labs or the related Services. The User declares to be aware that the Owner may be required to reveal personal data upon request of public authorities.
 
-### Additional Information About User's Personal Data[​](#additional-information-about-users-personal-data "Direct link to heading")
+### Additional Information About User's Personal Data
 
 In addition to the information contained in this privacy policy, Internet Identity Labs may provide the User with additional and contextual information concerning particular Services or the collection and processing of Personal Data upon request.
 
-### System Logs and Maintenance[​](#system-logs-and-maintenance "Direct link to heading")
+### System Logs and Maintenance
 
 For operation and maintenance purposes, Internet Identity Labs and any third-party services may collect files that record interaction with Internet Identity Labs (System logs) use other Personal Data (such as the IP Address) for this purpose.
 
-### Information not Contained in this Policy[​](#information-not-contained-in-this-policy "Direct link to heading")
+### Information not Contained in this Policy
 
 More details concerning the collection or processing of Personal Data may be requested from the Owner at any time. Please see the contact information at the beginning of this document.
 
-### How “Do Not Track” Requests are Handled[​](#how-do-not-track-requests-are-handled "Direct link to heading")
+### How “Do Not Track” Requests are Handled
 
 Internet Identity Labs does not support “Do Not Track” requests. To determine whether any of the third-party services it uses honor the “Do Not Track” requests, please read their privacy policies.
 
-### Changes to this Privacy Policy[​](#changes-to-this-privacy-policy "Direct link to heading")
+### Changes to this Privacy Policy
 
 The Owner reserves the right to make changes to this privacy policy at any time by giving notice to its Users on this page and possibly within Internet Identity Labs and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom.
 
 Should the changes affect processing activities performed on the basis of the User’s consent, the Owner shall collect new consent from the User, where required.
 
-Definitions and Legal References[​](#definitions-and-legal-references "Direct link to heading")
+Definitions and Legal References
 -----------------------------------------------------------------------------------------------
 
 **Personal Data (or Data)**
@@ -170,7 +170,7 @@ Any information that directly, indirectly, or in connection with other informati
 
 **Usage Data**
 
-Information collected automatically through Internet Identity Labs (or third-party services employed in Internet Identity Labs), which can include: the IP addresses or domain names of the computers utilized by the Users who use Internet Identity Labs, the URI addresses (Uniform Resource Identifier), the time of the request, the method utilized to submit the request to the server, the size of the file received in response, the numerical code indicating the status of the server's answer (successful outcome, error, etc.), the country of origin, the features of the browser and the operating system utilized by the User, the various time details per visit (e.g., the time spent on each page within the Application) and the details about the path followed within the Application with special reference to the sequence of pages visited, and other parameters about the device operating system and/or the User's IT environment.
+Information collected automatically through Internet Identity Labs (or third-party services employed in Internet Identity Labs), which can include: the IP addresses or domain names of the computers utilized by the Users who use Internet Identity Labs, the URI addresses (Uniform Resource Identifier), the time of the request, the method utilized to submit the request to the server, the size of the file received in response, the numerical code indicating the status of the server's answer (successful outcome, error, etc.), the country of origin, the features of the browser and the operating system utilized by the User, the various time details per visit (e.g., the time spent on each page within the Application) and the details about the path followed within the Application with special reference to the sequence of pages visited, other parameters about the device operating system and/or the User's IT environment, and a variety of actions taken inside NFID.
 
 **User**
 
