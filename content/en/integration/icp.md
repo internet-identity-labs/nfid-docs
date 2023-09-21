@@ -5,36 +5,6 @@ category: Integration
 description: "The complete guide to NFID"
 ---
 
-See the NFID SDK could look in a sample demo implementation: https://hvn26-aiaaa-aaaak-aaa2a-cai.ic0.app/
-
-## Installation
-
-Add the `@nfid/embed` package:
-
-```bash
-# npm
-npm install @nfid/embed
-
-# yarn
-yarn add @nfid/embed
-```
-
-## Usage
-
-Import the `NFID` class:
-
-```ts
-import { NFID } from "@nfid/embed";
-```
-
-The static `NFID.init()` method returns a promise that resolves as soon as the mounted NFID iframe is ready to use. You can use the `await` keyword to wait for the promise to resolve:
-
-```ts
-const nfid = await NFID.init();
-```
-
-You're now ready to onboard users and request approvals without interrupting your dapp UX.
-
 ### Authentication
 
 Check if the user is authenticated with the `nfid.isAuthenticated` property. If not, prepare the `Identity` package from `@dfinity/agent` and open the NFID Wallet auth modal with `nfid.getDelegation()`:
@@ -131,5 +101,19 @@ type Response = {
 const response: Response = await nfid.requestTransferFT({
   receiver, // the receiver address
   amount, // the amount to transfer
+});
+```
+
+### Request canister call
+
+The `nfid.requestCanisterCall()` method request approval to call another canister with the given `canisterId`, `method`, and `parameters` and return the response data.
+
+```ts
+type Response = unknown; // whatever the canister method returns
+
+const response: Response = await nfid.requestCanisterCall({
+  canisterId, // the canister id which will be called
+  method, // the method on the canister which will be called
+  parameters, // the parameters passed to the method on the canister
 });
 ```
