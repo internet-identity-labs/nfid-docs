@@ -90,3 +90,17 @@ const response: Response = await nfid.requestTransferFT({
   amount, // the amount to transfer
 });
 ```
+
+### Request canister call
+
+The `nfid.requestCanisterCall()` method request approval to call another canister with the given `canisterId`, `method`, and `parameters` and return the response data.
+
+```ts
+type Response = unknown; // whatever the canister method returns
+
+const response: Response = await nfid.requestCanisterCall({
+  canisterId, // the canister id which will be called
+  method, // the method on the canister which will be called
+  parameters, // the parameters passed to the method on the canister
+});
+```
