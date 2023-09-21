@@ -5,7 +5,7 @@ category: Integration
 description: "The complete guide to NFID"
 ---
 
-### Authentication
+## Authentication
 
 Check if the user is authenticated with the `nfid.isAuthenticated` property. If not, prepare the `Identity` package from `@dfinity/agent` and open the NFID Wallet auth modal when a user needs to authenicate with `nfid.getDelegation()`:
 
@@ -19,7 +19,20 @@ const delegationIdentity: Identity = await nfid.getDelegation({
 
 The [ICRC-28](#icrc-28-implementation) will describe the method `YOUR_CANISTER_ID_1`, `YOUR_CANISTER_ID_2`, and `ETC` canisters should have implemented.
 
-#### Working with the universal NFID Wallet
+### Check if delegation is universal or anonymous
+
+When a user authenticates, you can use `nfid.getDelegationType()` to see if the authenticated wallet is universal or an anonymous.
+
+```ts
+enum DelegationType {
+  GLOBAL = 0,
+  ANONYMOUS = 1,
+}
+
+const delegationType: DelegationType = nfid.getDelegationType();
+```
+
+## Working with the universal NFID Wallet
 
 [ICRC-28](https://github.com/dfinity/ICRC/issues/32) enables wallets to return same-principal delegations to different applications. These delegations grant authenticated smart contract canister access without requiring wallet prompts. It's crucial that these delegations are limited to specific canisters controlled by the application. Failing to do so is an open invitation for malicious applications to make unauthorized updates to any ICP canister, including ledger, governance, assets, and other data.
 
@@ -48,19 +61,6 @@ async fn get_trusted_origins() -> Vec<String> {
         String::from("https://yoururl.com") // to be replaced with your frontend origin(s)
     ]
 }
-```
-
-#### Check if delegation is universal or anonymous
-
-When a user authenticates, you can use `nfid.getDelegationType()` to see if the authenticated wallet is universal or an anonymous.
-
-```ts
-enum DelegationType {
-  GLOBAL = 0,
-  ANONYMOUS = 1,
-}
-
-const delegationType: DelegationType = nfid.getDelegationType();
 ```
 
 ### Update global delegation
@@ -122,3 +122,90 @@ const response: Response = await nfid.requestCanisterCall({
   parameters, // the parameters passed to the method on the canister
 });
 ```
+
+## Generating the same user identifier across multiple domains
+Anonymous delegations generate new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
+
+<ol>
+  <li>
+    
+Ensure you have `agent-js`, `auth-client`, `authentication`, `candid`, `identity`, and `principal` >= v0.12.1
+    
+  </li>
+    
+  <li>
+    
+Ensure your canister implements the `https_request` query call like [this](https://github.com/dfinity/interface-spec/blob/master/spec/index.adoc#the-http-gateway-protocol)
+    
+  </li>
+  <li>
+    
+Set the CORS response header [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) to allow the NFID origin `https://nfid.one`
+    
+  </li>
+  <li>
+    
+Add the `alternativeOrigins` json to `https://<YOUR-CANISTER-ID>.ic0.app/.well-known/ii-alternative-origins`
+```js
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "II Alternative Origins Principal Derivation Origins",
+  "description": "An object containing the alternative frontend origins of the given canister, which are allowed to use a canonical canister URL (https://<canister_id>.ic0.app or https://<canister_id>.raw.ic0.app) for principal derivation.",
+  "type": "object",
+  "properties": {
+    "alternativeOrigins": {
+      "description": "List of allowed alternative frontend origins",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [ "alternativeOrigins" ]
+}
+```
+Example
+```js
+{
+  "alternativeOrigins": [
+    "https://alternative-1.com",
+    "https://www.nice-frontend-name.org"
+  ]
+}
+```
+    
+  </li>
+  <li>
+    
+Add the `derivationOrigin` key and your frontend's canister URL as the value to the NFID configuration parameters:
+```js
+  loginButton.onclick = async () => {
+    await authClient.login({
+      onSuccess: async () => {
+        handleAuthenticated(authClient);
+      },
+      identityProvider:
+        process.env.DFX_NETWORK === "ic"
+          ? "https://nfid.one" + AUTH_PATH
+          : process.env.LOCAL_NFID_CANISTER + AUTH_PATH,
+      // Maximum authorization expiration is 30 days
+      maxTimeToLive: days * hours * nanosecondsPerHour,
+      windowOpenerFeatures: 
+        `left=${window.screen.width / 2 - 525 / 2}, `+
+        `top=${window.screen.height / 2 - 705 / 2},` +
+        `toolbar=0,location=0,menubar=0,width=525,height=705`,
+      derivationOrigin: "https://<YOUR-CANISTER-ID>.ic0.app"
+    });
+  };
+```
+    
+  </li>
+</ol>
+
+> **_NOTE:_** To prevent misuse of this feature, the number of alternative origins _must not_ be greater than 10.
+
+> **_NOTE:_** If you use another application as your derivation origin, make sure you trust it completely.
+
+View the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#alternative-frontend-origins) for more information.
