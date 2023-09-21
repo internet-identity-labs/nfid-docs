@@ -5,7 +5,7 @@ category: Integration
 description: The complete guide to NFID
 ---
 
-See the NFID SDK could look in a sample demo implementation: https://hvn26-aiaaa-aaaak-aaa2a-cai.ic0.app/
+Sample implementation to demonstrate how this could look in your app: https://hvn26-aiaaa-aaaak-aaa2a-cai.ic0.app/
 
 ## Installation
 

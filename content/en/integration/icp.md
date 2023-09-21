@@ -7,15 +7,17 @@ description: "The complete guide to NFID"
 
 ### Authentication
 
-Check if the user is authenticated with the `nfid.isAuthenticated` property. If not, prepare the `Identity` package from `@dfinity/agent` and open the NFID Wallet auth modal with `nfid.getDelegation()`:
+Check if the user is authenticated with the `nfid.isAuthenticated` property. If not, prepare the `Identity` package from `@dfinity/agent` and open the NFID Wallet auth modal when a user needs to authenicate with `nfid.getDelegation()`:
 
 ```ts
 import { Identity } from "@dfinity/agent";
 
 const delegationIdentity: Identity = await nfid.getDelegation({
-  targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
+  targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
 });
 ```
+
+The [ICRC-28](#icrc-28-implementation) will describe the method `YOUR_CANISTER_ID_1`, `YOUR_CANISTER_ID_2`, and `ETC` canisters should have implemented.
 
 #### Working with the universal NFID Wallet
 
@@ -36,7 +38,7 @@ At a high level, this specification defines:
 
 <img src="../ICRC-28.png" style="width:100%;margin:auto;padding-bottom:20px;"></img>
 
-The below Rust code is a sample implementation of step 2 in the ICRC-28 spec (the only step you need to implement when using the NFID SDK):
+The below Rust code is a sample implementation of step 2 in the ICRC-28 spec (the only step you need to implement when using the NFID SDK). Each of your canisters that the delegation should be able to call without a wallet prompt should have this method implemented:
 
 ```rust
 #[update]
