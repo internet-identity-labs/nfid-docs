@@ -21,7 +21,7 @@ const delegationIdentity: Identity = await nfid.getDelegation({
 
 [ICRC-28](https://github.com/dfinity/ICRC/issues/32) enables wallets to return same-principal delegations to different applications. These delegations grant authenticated smart contract canister access without requiring wallet prompts. It's crucial that these delegations are limited to specific canisters controlled by the application. Failing to do so is an open invitation for malicious applications to make unauthorized updates to any ICP canister, including ledger, governance, assets, and other data.
 
-If you aim to streamline your decentralized finance (DeFi) operations, such as checking wallet balances and initiating transfers, it's imperative to support ICRC-28. 
+If you aim to streamline your decentralized finance (DeFi) operations, such as checking wallet balances and initiating transfers, it's imperative to support ICRC-28.
 
 One of blockchain's main strengths lies in its composability, allowing developers to build on existing smart contracts. However, without ICRC-28, other developers won't know which users are utilizing your smart contracts, making collaboration and integration more challenging. **This is one of the reasons we highly recommend implementing ICRC-28.**
 
@@ -30,6 +30,7 @@ If your sole requirement is an anonymous delegation for user sign-ins, and you d
 ### ICRC-28 implementation
 
 At a high level, this specification defines:
+
 1. How a frontend makes an authentication request with target canisters
 2. How the wallet checks if each target canister listed the frontend URL as a trusted origin
 
@@ -49,13 +50,15 @@ async fn get_trusted_origins() -> Vec<String> {
 
 #### Check if delegation is universal or anonymous
 
-When a user authenticates, you can use `nfid.getDelegationType` to see if the authenticated wallet is universal or an anonymous.
+When a user authenticates, you can use `nfid.getDelegationType()` to see if the authenticated wallet is universal or an anonymous.
 
 ```ts
-export declare enum DelegationType {
-    GLOBAL = 0,
-    ANONYMOUS = 1
+enum DelegationType {
+  GLOBAL = 0,
+  ANONYMOUS = 1,
 }
+
+const delegationType: DelegationType = nfid.getDelegationType();
 ```
 
 ### Update global delegation
