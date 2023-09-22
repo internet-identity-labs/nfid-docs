@@ -30,7 +30,18 @@ import { NFID } from "@nfid/embed";
 The static `NFID.init()` method returns a promise that resolves as soon as the mounted NFID iframe is ready to use. You can use the `await` keyword to wait for the promise to resolve:
 
 ```ts
-const nfid = await NFID.init();
+type NFIDConfig = {
+  origin?: string; // default is "https://nfid.one"
+  application?: { // your application details to display in the NFID iframe
+    name?: string; // your app name user can recognize
+    logo?: string; // your app logo user can recognize
+  };
+};
+
+const nfid = await NFID.init({
+  origin,
+  application: { name, logo },
+}: NFIDConfig);
 ```
 
 You're now ready to onboard users and request approvals without interrupting your dapp UX.
