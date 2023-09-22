@@ -14,6 +14,7 @@ import { Identity } from "@dfinity/agent";
 
 const delegationIdentity: Identity = await nfid.getDelegation({
   targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
+  derivationOrigin, // https://<yourCanisterId>.ic0.app in case your running on a custom domain
 });
 ```
 
@@ -124,6 +125,7 @@ const response: Response = await nfid.requestCanisterCall({
 ```
 
 ## Generating the same user identifier across multiple domains
+
 Anonymous delegations generate new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
 
 <ol>
