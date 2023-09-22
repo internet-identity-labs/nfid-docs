@@ -14,11 +14,13 @@ import { Identity } from "@dfinity/agent";
 
 const delegationIdentity: Identity = await nfid.getDelegation({
   targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
-  derivationOrigin, // https://<yourCanisterId>.ic0.app in case your running on a custom domain
+  derivationOrigin, "https://<yourCanisterId>.ic0.app" // optional in case you're running on a custom domain
 });
 ```
 
 The [ICRC-28](#icrc-28-implementation) will describe the method `YOUR_CANISTER_ID_1`, `YOUR_CANISTER_ID_2`, and `ETC` canisters should have implemented.
+
+See more detailed information on [using custom domains with the derivationOrigin below](#using-a-custom-domain).
 
 ### Check if delegation is universal or anonymous
 
@@ -124,9 +126,9 @@ const response: Response = await nfid.requestCanisterCall({
 });
 ```
 
-## Generating the same user identifier across multiple domains
+## Using a custom domain
 
-Anonymous delegations generate new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated across different domains, follow these instructions.
+Anonymous delegations generate new identifiers for each `user account <> domain` pair. If developers want to ensure the same identifiers are generated on custom domains as their frontend canister domain, follow these instructions.
 
 <ol>
   <li>
@@ -181,26 +183,14 @@ Example
   </li>
   <li>
     
-Add the `derivationOrigin` key and your frontend's canister URL as the value to the NFID configuration parameters:
-```js
-  loginButton.onclick = async () => {
-    await authClient.login({
-      onSuccess: async () => {
-        handleAuthenticated(authClient);
-      },
-      identityProvider:
-        process.env.DFX_NETWORK === "ic"
-          ? "https://nfid.one" + AUTH_PATH
-          : process.env.LOCAL_NFID_CANISTER + AUTH_PATH,
-      // Maximum authorization expiration is 30 days
-      maxTimeToLive: days * hours * nanosecondsPerHour,
-      windowOpenerFeatures: 
-        `left=${window.screen.width / 2 - 525 / 2}, `+
-        `top=${window.screen.height / 2 - 705 / 2},` +
-        `toolbar=0,location=0,menubar=0,width=525,height=705`,
-      derivationOrigin: "https://<YOUR-CANISTER-ID>.ic0.app"
-    });
-  };
+Add the `derivationOrigin` key and your frontend's canister URL as the value to the NFID configuration parameters when calling `getDelegation`:
+```ts
+import { Identity } from "@dfinity/agent";
+
+const delegationIdentity: Identity = await nfid.getDelegation({
+  targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
+  derivationOrigin, "https://<yourCanisterId>.ic0.app" // optional in case you're running on a custom domain
+});
 ```
     
   </li>
