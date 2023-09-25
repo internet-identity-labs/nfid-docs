@@ -5,7 +5,7 @@ category: Integration
 description: The complete guide to NFID
 ---
 
-Sample implementation to demonstrate how this could look in your app: https://hvn26-aiaaa-aaaak-aaa2a-cai.ic0.app/
+Sample implementation to demonstrate how this could look in your app: https://playground.nfid.one
 
 ## Installation
 
@@ -39,8 +39,10 @@ type NFIDConfig = {
 };
 
 const nfid = await NFID.init({
-  origin,
-  application: { name, logo },
+  application: {
+    name: "My Sweet App",
+    logo: "https://dev.nfid.one/static/media/id.300eb72f3335b50f5653a7d6ad5467b3.svg"
+  },
 }: NFIDConfig);
 ```
 
