@@ -13,8 +13,12 @@ Check if the user is authenticated with the `nfid.isAuthenticated` property. If 
 import { Identity } from "@dfinity/agent";
 
 const delegationIdentity: Identity = await nfid.getDelegation({
-  targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
-  derivationOrigin, "https://<yourCanisterId>.ic0.app" // optional in case you're running on a custom domain
+  // optional targets ICRC-28 implementation, but required to support universal NFID Wallet auth
+  targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"],
+  // optional derivationOrigin in case you're running on a custom domain
+  derivationOrigin, "https://<yourCanisterId>.ic0.app",
+  // optional maxTimeToLive defaults to 8 hours in nanoseconds;
+  maxTimeToLive: BigInt(8) * BigInt(3_600_000_000_000)
 });
 ```
 
@@ -188,11 +192,12 @@ Add the `derivationOrigin` key and your frontend's canister URL as the value to 
 import { Identity } from "@dfinity/agent";
 
 const delegationIdentity: Identity = await nfid.getDelegation({
-  targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
-  derivationOrigin, "https://<yourCanisterId>.ic0.app" // optional in case you're running on a custom domain
+targets: ["YOUR_CANISTER_ID_1", "YOUR_CANISTER_ID_2", "ETC"], // optional ICRC-28 implementation, but required to support universal NFID Wallet auth
+derivationOrigin, "https://<yourCanisterId>.ic0.app" // optional in case you're running on a custom domain
 });
+
 ```
-    
+
   </li>
 </ol>
 
@@ -201,3 +206,4 @@ const delegationIdentity: Identity = await nfid.getDelegation({
 > **_NOTE:_** If you use another application as your derivation origin, make sure you trust it completely.
 
 View the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/internet-identity-spec.adoc#alternative-frontend-origins) for more information.
+```
