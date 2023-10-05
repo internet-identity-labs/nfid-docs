@@ -12,7 +12,7 @@ NFID is a self-custodial identity provider and key management protocol that make
 
 ## What is NFID SDK?
 
-The `@nfid/core` npm package is a JavaScript SDK that easily integrates [NFID's Client Authentication Protocol](./how-it-works/auth-protocol) for user authentication, registration, and transaction signatures.
+The [`@nfid/embed`](https://www.npmjs.com/package/@nfid/embed) npm package is a JavaScript SDK that easily integrates [NFID's Client Authentication Protocol](./how-it-works/auth-protocol) for user authentication, registration, and transaction signatures.
 
 Get started with [integration](./integration/quickstart).
 
