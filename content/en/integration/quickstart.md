@@ -9,14 +9,14 @@ Sample implementation to demonstrate how this could look in your app: https://pl
 
 ## Installation
 
-Add the `@nfid/embed` package:
+Add the `@nfid/embed` package and dependencies:
 
 ```bash
 # npm
-npm install @nfid/embed
+npm install @nfid/embed @dfinity/agent @dfinity/identity @dfinity/auth-client @dfinity/principal
 
 # yarn
-yarn add @nfid/embed
+yarn add @nfid/embed @dfinity/agent @dfinity/identity @dfinity/auth-client @dfinity/principal
 ```
 
 ## Setup
