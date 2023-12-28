@@ -7,7 +7,15 @@ description: "The complete guide to NFID"
 
 ## Authentication
 
-Check if the user is authenticated with the `nfid.isAuthenticated` property. If not, prepare the `Identity` package from `@dfinity/agent` and open the NFID Wallet auth modal when a user needs to authenicate with `nfid.getDelegation()`:
+Check if the user is authenticated with the `nfid.isAuthenticated` property. If `true` the user is already authenticated and you can request the delegation identity directly without user interaction from `nfid.getIdentity()`:
+
+```ts
+import { Identity } from "@dfinity/agent";
+
+const identity: Identity = nfid.getIdentity();
+```
+
+If not, prepare the `Identity` package from `@dfinity/agent` and open the NFID Wallet auth modal when a user needs to authenicate with `nfid.getDelegation()`:
 
 ```ts
 import { Identity } from "@dfinity/agent";
